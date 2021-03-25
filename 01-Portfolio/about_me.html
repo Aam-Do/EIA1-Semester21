@@ -5,24 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me - Amélie</title>
+    <style>
+        .background {
+            background-image: url('/01-Portfolio/Grafikdesign/OAYXIQ0.jpg');
+            background-repeat: repeat;
+            background-size: 100%;
+        }
+        .box {
+            background-color: indianred;
+            margin-left: 20%;
+            margin-right: 20%;
+            padding: 2% 5% 5% 5%;
+        }
+        .headlines {
+            color: ivory;
+            font-size: 80px;
+            font-family: Lobster, monospace;
+            text-align: center;
+            text-decoration:underline;
+        }
+        .text {
+            color: ivory;
+            font-size: 30px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        
+        }
+        .button {
+            text-align: center;
+
+        }
+    </style>
 </head>
-<body>
-    <div>
-        <h1>About Me</h1><br>
+<body class="background">
+    <div class="box">
+        <h1 class="headlines">About Me</h1><br>
             <img src="Fotos/Profilbild.jpg" alt="Profilbild" title="Profilbild" style="width: 30%;">
-            <p><b>Name:</b> Amélie</p>
-            <p><b>Geburtstag:</b> 05.06.2003</p>
-            <p><b>Studiengang:</b> MKB Gruppe B</p>
-            <p><b>Lieblingsfarbe:</b> Weinrot</p>
-            <p><b>Lieblingsfilm:</b> Prinzessin Mononoke</p>
-            <p><b>Lieblingstier:</b> Hund</p>
-            <p><b>Hobbies:</b> Zeichnen, Videospiele, Musik machen und hören, Skifahren</p>
-            <p><b>Zeichenprogramm:</b> Krita</p>
+            <div class="text">
+                <p><b>Name:</b> Amélie</p>
+                <p><b>Geburtstag:</b> 05.06.2003</p>
+                <p><b>Studiengang:</b> MKB Gruppe B</p>
+                <p><b>Lieblingsfarbe:</b> Weinrot</p>
+                <p><b>Lieblingsfilm:</b> Prinzessin Mononoke</p>
+                <p><b>Lieblingstier:</b> Hund</p>
+                <p><b>Hobbies:</b> Zeichnen, Videospiele, Musik machen und hören, Skifahren</p>
+                <p><b>Zeichenprogramm:</b> Krita</p>
+            </div>
+            <div>
+                <a href="portfolio.html"><button class="button">Portfolio</button></a>
+                <a href="#"><button class="button">About Me</button></a>
+                <a href="contacts.html"><button class="button">Contacts</button></a>
+            </div>
     </div>
-</body><br>
-<footer>
-    <a href="portfolio.html"><button>Portfolio</button></a>
-    <a href="#"><button>About Me</button></a>
-    <a href="contacts.html"><button>Contacts</button></a>
-</footer>
+</body>
 </html>
