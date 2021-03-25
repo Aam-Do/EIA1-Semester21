@@ -5,20 +5,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Amélie</title>
+    <style>
+        .background {
+            background-image: url('/01-Portfolio/Grafikdesign/OAYXIQ0.jpg');
+            background-repeat: repeat;
+            background-size: 100%;
+        }
+        .box {
+            background-color: indianred;
+            margin: -2% 20% -2% 20%;
+            padding: 2% 5% 5% 5%;
+        }
+        .headlines {
+            color: cornsilk;
+            font-size: 80px;
+            font-family: Lobster, monospace;
+            text-align: center;
+            text-decoration:underline;
+        }
+        .text {
+            color: cornsilk;
+            font-size: 25px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        
+        }
+        .button {
+            background-color: indianred;
+            border: none;
+            color: cornsilk;
+            padding: 3% 6%;
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+            text-decoration: underline;
+            border-radius: 20px;
+            border: 2px solid cornsilk;
+            transition-duration: 0.4s;
+        }
+        .button:hover {
+            background-color: cornsilk;
+            color: indianred;
+        }
+        .pictures {
+
+        }
+        a {
+            color: cornsilk
+        }
+    </style>
 </head>
-<body>
-    <div>
-        <h1>Portfolio</h1><br>
-        <p>Ein Portfolio von meinen fiktiven Werken:</p>
-        <p>Inhalt:
-            <ol>
-                <li><a href="#drawings-header">Digitale Zeichnungen</a></li>
-                <li><a href="#fotos-header">Fotografien</a></li>
-                <li><a href="#animationen-header">Animationen</a></li>
-                <li><a href="#footer">Mehr...</a></li>
-            </ol>
-        </p>
-        <h2 id="drawings-header">Digitale Zeichnungen</h2>
+<body class="background">
+    <div class="box">
+        <h1 class="headlines">Portfolio</h1><br>
+        <div class="text">
+            <p><b>Eine digitale Ausstellung vergangener Werke:</b></p>
+            <p>Inhalt:
+                <ol>
+                    <li><a href="#drawings-header">Digitale Zeichnungen</a></li>
+                    <li><a href="#fotos-header">Fotografien</a></li>
+                    <li><a href="#animationen-header">Animationen</a></li>
+                    <li><a href="#footer">Mehr...</a></li>
+                </ol>
+            </p>
+        </div>
+        <h2 id="drawings-header" class="text">Digitale Zeichnungen</h2>
             <img src="Bilder/Ogre.png" title="Ogre" style="width: 24%;">
             <img src="Bilder/Music_stamp.png" title="Music" style="width: 24%;">
             <img src="Bilder/MaximusPrime.png" title="Maximus Prime" style="width: 24%;">
@@ -27,33 +77,16 @@
             <img src="Bilder/Villain.png" title="Assassin" style="width: 24%;">
             <img src="Bilder/Christmas_Pony_FX-inst.png" title="Pony" style="width: 24%;">
             <img src="Bilder/Funky_Monkey_Friday.png" title="Corpse Husband" style="width: 24%;">
-        <h2 id="fotos-header">Fotografien</h2>
+        <h2 id="fotos-header" class="text">Fotografien</h2>
             <img src="Fotos/foto1.jpg" title="Schnee Seen" style="width: 24%;">
             <img src="Fotos/foto2.jpg" title="Verschneiter Wald" style="width: 24%;">
             <img src="Fotos/foto3.jpg" title="Aussicht" style="width: 24%;">
             <img src="Fotos/foto4.jpg" title="Verschneiter Weg" style="width: 24%;">
-        <h2 id="animationen-header">Animationen</h2>
-            <video autoplay muted loop title="Biologie">
-                <source src="Videos/clip1.mp4" type="video/mp4">
-                <source src="Videos/L01_task_material_animation_clip1.ogg" type="video/ogg">
-            </video>
-            <video autoplay muted loop title="Flugzeug">
-                <source src="Videos/clip2.mp4" type="video/mp4">
-                <source src="Videos/L01_task_material_animation_clip2.ogg" type="video/ogg">
-            </video>
-            <video autoplay muted loop title="Badezimmer">
-                <source src="Videos/clip3.mp4" type="video/mp4">
-                <source src="Videos/L01_task_material_animation_clip3.ogg" type="video/ogg">
-            </video>
-            <video autoplay muted loop title="Decorating and Design">
-                <source src="Videos/clip4.mp4" type="video/mp4">
-                <source src="Videos/L01_task_material_animation_clip4.ogg" type="video/ogg">
-            </video>
+        <div style="text-align: center; margin-top: 5%;">
+            <button class="button">Portfolio</button>
+            <a href="about_me.html"><button class="button">About Me</button></a>
+            <a href="contacts.html"><button class="button">Contacts</button></a>
+        </div>
     </div>
-</body><br>
-<footer id="footer">
-    <a href="#"><button>Portfolio</button></a>
-    <a href="about_me.html"><button>About Me</button></a>
-    <a href="contacts.html"><button>Contacts</button></a>
-</footer>
+</body>
 </html>
