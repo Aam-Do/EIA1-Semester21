@@ -13,33 +13,45 @@
         }
         .box {
             background-color: indianred;
-            margin-left: 20%;
-            margin-right: 20%;
+            margin: -2% 20% -2% 20%;
             padding: 2% 5% 5% 5%;
         }
         .headlines {
-            color: ivory;
+            color: cornsilk;
             font-size: 80px;
             font-family: Lobster, monospace;
             text-align: center;
             text-decoration:underline;
         }
         .text {
-            color: ivory;
-            font-size: 30px;
-            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: cornsilk;
+            font-size: 25px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         
         }
         .button {
+            background-color: indianred;
+            border: none;
+            color: cornsilk;
+            padding: 3% 6%;
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
             text-align: center;
-
+            text-decoration: underline;
+            border-radius: 20px;
+            border: 2px solid cornsilk;
+            transition-duration: 0.4s;
+        }
+        .button:hover {
+            background-color: cornsilk;
+            color: indianred;
         }
     </style>
 </head>
 <body class="background">
     <div class="box">
         <h1 class="headlines">About Me</h1><br>
-            <img src="Fotos/Profilbild.jpg" alt="Profilbild" title="Profilbild" style="width: 30%;">
+            <img src="Fotos/Profilbild.jpg" alt="Profilbild" title="Profilbild" style="width: 30%; border-radius: 12px;">
             <div class="text">
                 <p><b>Name:</b> Amélie</p>
                 <p><b>Geburtstag:</b> 05.06.2003</p>
@@ -49,9 +61,9 @@
                 <p><b>Lieblingstier:</b> Hund</p>
                 <p><b>Hobbies:</b> Zeichnen, Videospiele, Musik machen und hören, Skifahren</p>
                 <p><b>Zeichenprogramm:</b> Krita</p>
-            </div>
-            <div>
-                <a href="portfolio.html"><button class="button">Portfolio</button></a>
+            </div><br>
+            <div style="text-align: center; margin-top: 5%;">
+                <a href="portfolio.html"><button class="button button:hover">Portfolio</button></a>
                 <a href="#"><button class="button">About Me</button></a>
                 <a href="contacts.html"><button class="button">Contacts</button></a>
             </div>
