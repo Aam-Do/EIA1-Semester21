@@ -1,0 +1,46 @@
+.background {
+    background-image: url('../02-Portfolio/Bilder/Strawberries.jpg');
+    background-repeat: repeat;
+    background-size: 75%;
+}
+.box {
+    background-color: indianred;
+    margin: -2% 20% -2% 20%;
+    padding: 2% 5% 5% 5%;
+}
+.headlines {
+    color: ivory;
+    font-size: 80px;
+    font-family: 'Lobster Two', 'Berskhire Swash', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    text-decoration:underline;
+}
+.text {
+    color: ivory;
+    font-size: 25px;
+    font-family: 'Merienda', 'Montserrat', Verdana, Tahoma, sans-serif;
+
+}
+.pictures {
+    padding: 2% 0% 5% 2%;
+}
+.button {
+    background-color: indianred;
+    border: none;
+    color: ivory;
+    padding: 3% 6%;
+    font-size: 30px;
+    font-family: 'Lobster Two', 'Berskhire Swash', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    text-decoration: underline;
+    border-radius: 20px;
+    border: 2px solid ivory;
+    transition-duration: 0.4s;
+}
+.button:hover {
+    background-color: ivory;
+    color: indianred;
+}
+a {
+    color: ivory;
+}
