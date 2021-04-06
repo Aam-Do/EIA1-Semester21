@@ -4,49 +4,50 @@
     background-size: 40px;
 }
 .content {
-    background-color: indianred;
     margin: auto;
-    padding: 2% 5% 5% 5%;
     width: 800px;
 }
 .headlines {
-    color: ivory;
+    color: indianred;
     font-size: 80px;
     font-family: 'Lobster Two', 'Berskhire Swash', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     text-decoration:underline;
 }
+h2 {
+    color: indianred;
+    font-size: 30px;
+    font-family: sans-serif;
+}
 .text {
-    color: ivory;
+    color: indianred;
     font-size: 25px;
     font-family: sans-serif;
-
 }
 .pictures {
-    margin: 0% -5% 0% -5%;
     padding: 5% 5% 5% 5%;
     background-color: #e38d7f;
     border-radius: 40px;
 }
 .button {
-    background-color: indianred;
+    background-color: ivory;
     border: none;
-    color: ivory;
+    color: indianred;
     padding: 3% 6%;
     font-size: 30px;
     font-family: sans-serif;
     text-align: center;
     text-decoration: underline;
     border-radius: 20px;
-    border: 2px solid ivory;
+    border: 2px solid indianred;
     transition-duration: 0.4s;
 }
 .button:hover {
-    background-color: ivory;
-    color: indianred;
+    background-color: indianred;
+    color: ivory;
 }
 a {
-    color: ivory;
+    color: indianred;
 }
 video {
     width: 49%;
