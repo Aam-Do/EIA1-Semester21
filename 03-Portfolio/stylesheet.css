@@ -11,7 +11,7 @@
 }
 .header {
     background-color:#174375;
-    height: 600px;
+    height: 550px;
     border-bottom-right-radius: 400px;
     border-bottom-left-radius: 400px;
     text-align: center;
@@ -100,9 +100,6 @@ h3 {
     background-color: ivory;
     color: #174375;
     border: 2px solid ivory;
-}
-.sticky {
-
 }
 .image {
     width: 24%;
