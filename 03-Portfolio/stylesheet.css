@@ -71,11 +71,15 @@ h3 {
     background-color:#1b539c85;
     border-radius: 20px;
 }
-.button {
-    background-color: ivory;
-    color: #174375;
-    padding: 3% 6%;
-    font-size: 30px;
+#navbar {
+    background-color: #174375;
+}
+#navbar button {
+    background-color: #174375;
+    color: ivory;
+    padding: 2% 6%;
+    margin: 20px;
+    font-size: 23px;
     font-family: sans-serif;
     text-align: center;
     text-decoration: underline;
@@ -83,9 +87,18 @@ h3 {
     border: 2px solid #174375;
     transition-duration: 0.4s;
 }
-.button:hover {
-    background-color: #174375;
-    color: ivory;
+#navbar button:hover {
+    background-color: ivory;
+    color: #174375;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.sticky + .content {
+    padding-top: 60px;
 }
 .image {
     width: 24%;

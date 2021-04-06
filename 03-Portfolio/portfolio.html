@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lobster+Two:ital,wght@1,700&family=Merienda&family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylesheet.css">
+    <script src="sticky_nav.js"></script>
     <title>Portfolio - Amélie</title>
 </head>
 <body class="background" id="top">
@@ -29,6 +30,11 @@
             </div>
         </header>
         <main class="main">
+            <div style="text-align: center; margin-top: 10%;" id="navbar">
+                <button id="selected">Portfolio</button>
+                <a href="about_me.html"><button>About Me</button></a>
+                <a href="contacts.html"><button>Contact</button></a>
+            </div><br>
             <div class="text">
                 <h2><u>Portfolio</u></h2><br>
                 <p><b>Eine digitale Ausstellung vergangener Werke:</b></p>
@@ -37,7 +43,7 @@
                         <li><a href="#drawings-header">Digitale Zeichnungen</a></li>
                         <li><a href="#fotos-header">Fotografien</a></li>
                         <li><a href="#animations-header">Animationen von KermitTheFroggirl</a></li>
-                        <li><a href="#buttons">Weitere Seiten...</a></li>
+                        <li><a href="#navbar">Weitere Seiten...</a></li>
                     </ol>
                 </p><br>
             </div>
@@ -64,11 +70,6 @@
                     <video controls src="Animationen/damn-bi.mp4" title="Meme video" onloadstart="this.volume=0.5"></video>
                     <video controls src="Animationen/turn.mp4" title="Turning animation"></video>
                 </div>
-            <div style="text-align: center; margin-top: 10%;" id="buttons">
-                <button class="button">Portfolio</button>
-                <a href="about_me.html"><button class="button">About Me</button></a>
-                <a href="contacts.html"><button class="button">Contact</button></a>
-            </div><br>
         </main>
         <footer>
             <p style="font-size: 18px; margin-top: 10%; margin-bottom: -5%; float: right;" class="text"><a href="#top">Zurück nach oben</a></p>
