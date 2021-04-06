@@ -73,7 +73,6 @@ h3 {
 }
 .button {
     background-color: ivory;
-    border: none;
     color: #174375;
     padding: 3% 6%;
     font-size: 30px;
@@ -99,4 +98,37 @@ video {
 }
 #profilbild {
     float: right;
+}
+.contact-form {
+    width: fit-content;
+    padding: 20px 20px;
+    background-color: #1b539c85;
+    border-radius: 20px;
+}
+.form-text {
+    width: 200px; height: 20px;
+    font-size: 20px;
+    margin: 0.5em;
+}
+textarea {
+    width: 300px; height: 50px;
+    font-size: 20px;
+    margin: 0.5em;
+}
+.form-button {
+    background-color: ivory;
+    color: #174375;
+    padding: 0.5em 2em;
+    margin: 0.5em;
+    font-size: 20px;
+    font-family: sans-serif;
+    text-align: center;
+    text-decoration: underline;
+    border-radius: 20px;
+    border: 2px solid #174375;
+    transition-duration: 0.4s;
+}
+.form-button:hover {
+    background-color: #174375;
+    color: ivory;
 }
