@@ -6,15 +6,15 @@
 .content {
     margin: auto;
     margin-top: -110px;
+    padding-bottom: 50px;
     width: 800px;
 }
 .header {
     background-color:#174375;
-    height: 430px;
+    height: 600px;
     border-bottom-right-radius: 400px;
     border-bottom-left-radius: 400px;
     text-align: center;
-    
 }
 .headlines {
     color: ivory;
@@ -72,33 +72,37 @@ h3 {
     border-radius: 20px;
 }
 #navbar {
-    background-color: #174375;
-}
-#navbar button {
-    background-color: #174375;
-    color: ivory;
-    padding: 2% 6%;
-    margin: 20px;
-    font-size: 23px;
-    font-family: sans-serif;
-    text-align: center;
-    text-decoration: underline;
-    border-radius: 20px;
-    border: 2px solid #174375;
-    transition-duration: 0.4s;
-}
-#navbar button:hover {
-    background-color: ivory;
-    color: #174375;
-}
-
-.sticky {
+    overflow: hidden;
+    background-color: #224c7ce3;
+    margin-left: 700px;
+    padding: 15px 20px 20px 20px;
     position: fixed;
     top: 0;
-    width: 100%;
+    width: fit-content;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
 }
-.sticky + .content {
-    padding-top: 60px;
+#navbar a {
+    color: ivory;
+    font-size: 18px;
+    font-family: sans-serif;
+    text-decoration: none;
+    margin: 10px 20px;
+    padding: 5px 10px;
+    border-radius: 18px;
+    border: 2px solid transparent;
+    transition-duration: 0.4s;
+}
+#navbar a:hover {
+    border: 2px solid ivory;
+}
+#navbar a.active {
+    background-color: ivory;
+    color: #174375;
+    border: 2px solid ivory;
+}
+.sticky {
+
 }
 .image {
     width: 24%;
