@@ -1,12 +1,13 @@
 .background {
-    background-image: url('../03-Portfolio/Bilder/Strawberries.jpg');
+    background-image: url('../03-Portfolio/Bilder/bg.png');
     background-repeat: repeat;
-    background-size: 75%;
+    background-size: 40px;
 }
-.box {
+.content {
     background-color: indianred;
-    margin: -2% 20% -2% 20%;
+    margin: auto;
     padding: 2% 5% 5% 5%;
+    width: 800px;
 }
 .headlines {
     color: ivory;
@@ -18,7 +19,7 @@
 .text {
     color: ivory;
     font-size: 25px;
-    font-family: 'Merienda', 'Montserrat', Verdana, Tahoma, sans-serif;
+    font-family: sans-serif;
 
 }
 .pictures {
@@ -33,7 +34,7 @@
     color: ivory;
     padding: 3% 6%;
     font-size: 30px;
-    font-family: 'Lobster Two', 'Berskhire Swash', 'Arial Narrow', Arial, sans-serif;
+    font-family: sans-serif;
     text-align: center;
     text-decoration: underline;
     border-radius: 20px;
@@ -49,4 +50,7 @@ a {
 }
 video {
     width: 49%;
+}
+#profilbild {
+    float: right;
 }
