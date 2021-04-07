@@ -32,7 +32,7 @@
 .headline-text {
     color: ivory;
     font-size: 40px;
-    font-family: 'Merienda';
+    font-family: 'Merienda', 'Arial Narrow', Arial, sans-serif;
     text-decoration: underline;
     padding-right: 50px;
 }
@@ -53,18 +53,18 @@
 h2 {
     color: #174375;
     font-size: 35px;
-    font-family: sans-serif;
+    font-family: 'Merienda', 'Arial Narrow', Arial, sans-serif;
     text-decoration: underline;
 }
 h3 {
     color: #174375;
     font-size: 30px;
-    font-family: sans-serif;
+    font-family: 'Merienda', 'Arial Narrow', Arial, sans-serif;
 }
 .text {
     color: #174375;
     font-size: 23px;
-    font-family: sans-serif;
+    font-family: 'Merienda', 'Arial Narrow', Arial, sans-serif;
 }
 .pictures {
     padding: 2% 2% 2% 2%;
@@ -85,7 +85,7 @@ h3 {
 #navbar a {
     color: ivory;
     font-size: 18px;
-    font-family: sans-serif;
+    font-family: 'Merienda', 'Arial Narrow', Arial, sans-serif;
     text-decoration: none;
     margin: 10px 20px;
     padding: 5px 10px;
@@ -122,6 +122,7 @@ video {
     color: ivory;
     width: 200px; height: 20px;
     font-size: 20px;
+    font-family: 'Merienda', 'Arial Narrow', Arial, sans-serif;
     padding: 0.4em;
     margin: 0.5em;
     border: none;
@@ -131,12 +132,14 @@ textarea {
     width: 300px; height: 50px;
     color: ivory;
     font-size: 20px;
+    font-family: 'Merienda', 'Arial Narrow', Arial, sans-serif;
     padding: 0.4em;
     margin: 0.5em;
     border: none;
 }
 ::placeholder {
     color: ivory;
+    font-family: 'Merienda', 'Arial Narrow', Arial, sans-serif;
 }
 .form-button {
     background-color: ivory;
@@ -144,7 +147,7 @@ textarea {
     padding: 0.5em 2em;
     margin: 0.5em;
     font-size: 20px;
-    font-family: sans-serif;
+    font-family: 'Merienda', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     text-decoration: underline;
     border-radius: 20px;
@@ -162,7 +165,13 @@ textarea {
 #confirmation-text {
     color: #174375ed;
     font-size: 14px;
-    font-family: sans-serif;
+    font-family: 'Merienda', 'Arial Narrow', Arial, sans-serif;
     margin-right: 20em;
     margin-left: 0.6em;
+}
+#back-to-top {
+    font-size: 18px;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    float: right;
 }
