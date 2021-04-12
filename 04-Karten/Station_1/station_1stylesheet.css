@@ -7,17 +7,17 @@
     background-image: url(Bilder/wrapperbg.png);
     width: 600px; height: 400px;
 }
-.text {
+.wrapper .text {
     padding: 30px;
     margin: auto;
 }
-h1 {
+.wrapper .text h1 {
     color: white;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 30px;
     margin-bottom: 40px;
 }
-p {
+.wrapper .text p {
     color: white;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
