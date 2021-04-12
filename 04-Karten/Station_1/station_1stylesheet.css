@@ -1,3 +1,7 @@
+body, html {
+    height: 100%;
+    overflow: hidden;
+}
 .background {
     background-image: url(Bilder/bg.png);
     background-repeat: repeat;
@@ -6,7 +10,11 @@
 .wrapper {
     background-image: url(Bilder/wrapperbg.png);
     width: 600px; height: 400px;
-}
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 .wrapper .text {
     padding: 30px;
     margin: auto;
@@ -16,6 +24,7 @@
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 30px;
     margin-bottom: 40px;
+    text-align: center;
 }
 .wrapper .text p {
     color: white;
