@@ -31,3 +31,19 @@ body, html {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
 }
+b {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%);
+}
+.shells {
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+}
+.penguin {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+}
