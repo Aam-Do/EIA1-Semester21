@@ -1,5 +1,9 @@
+body, html {
+    height: 100%;
+    overflow: hidden;
+}
 .background {
-    background-image: url(Bilder/bg.png);
+    background-image: url(Bilder/bg\ \(1\).png);
     background-repeat: repeat;
     background-size: auto;
 }
@@ -17,29 +21,21 @@
 }
 .wrapper .text h1 {
     color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 30px;
-    margin-bottom: 40px;
+    font-family: 'Arizonia', Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 50px;
+    margin-bottom: 20px;
+    margin-top: 5px;
     text-align: center;
 }
 .wrapper .text p {
     color: white;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 20px;
+    font-family: 'Allura', Georgia, 'Times New Roman', Times, serif;
+    font-size: 27px;
 }
 b {
     position: absolute;
-    top: 65%;
+    bottom: 15%;
     left: 50%;
     transform: translate(-50%);
-}
-.shells {
-    position: absolute;
-    bottom: -30px;
-    left: -30px;
-}
-.penguin {
-    position: absolute;
-    bottom: -30px;
-    right: -30px;
+    font-size: larger;
 }
