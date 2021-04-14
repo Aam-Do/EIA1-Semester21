@@ -38,12 +38,17 @@
     position: relative;
     padding-right: 25px;
 }
+.single_shell:hover img[alt="Muschel"] {
+    opacity: 0%;
+}
+.single_shell img[alt="Muschel"], .single_shell img[alt="Muschel offen"] {
+    transition-duration: 0.3s;
+}
 .single_shell img[alt="Muschel offen"] {
     position: absolute;
     left: 0;
     opacity: 0%;
-    transition-duration: 0.3s;
 }
-.single_shell img[alt="Muschel offen"]:hover {
+.single_shell:hover img[alt="Muschel offen"] {
     opacity: 100%;
 }
