@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="station_4stylesheet.css">
+    <title>Station 4</title>
+</head>
+<body class="background">
+    <div class="wrapper">
+        <div class="text">
+            <h1>Bewertung</h1>
+        </div>
+        <form class="form" action="#">
+            <label for="name">Ihr Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="comment">Schreiben Sie hier Ihre Bewertung:</label><br>
+            <textarea name="comment" id="comment" cols="50" rows="5" required></textarea><br>
+            <label for="recommend">Würden Sie einen Urlaub in Furtwangen weiterempfehlen?</label><br>
+            <input type="radio" name="recommend" id="yes" value="yes" required>
+            <label for="yes">Ja</label>
+            <input type="radio" name="recommend" id="no" value="no" required>
+            <label for="no">Nein</label><br>
+            <input type="submit" value="Senden">
+        </form>
+    </div>
+</body>
+</html>
