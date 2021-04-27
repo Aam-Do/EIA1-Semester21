@@ -17,22 +17,22 @@ var asia2018 = 16274.2;
 var australia2008 = 1993;
 var australia2018 = 2100.5;
 var entire2018 = africa2018 + southAmerica2018 + europe2018 + northAmerica2018 + asia2018 + australia2018;
-function emissions(continent, continent2008, continent2018) {
-    console.log("hallo welt");
-}
-;
-/*
-document.querySelector("span").innerHTML = "continent";
-*/
-emissions(continentAfrica, africa2008, africa2018);
 window.addEventListener('load', function () {
-    document.querySelector('.australia').addEventListener('click', function () {
-        document.querySelector("#titleRegion").innerHTML = continentAustralia;
-        document.querySelector("#subtitleRegion").innerHTML = continentAustralia;
-        document.querySelector("#continent2018").innerHTML = australia2018.toString();
-        document.querySelector("#continentRelative").innerHTML = Math.round(australia2018 / entire2018 * 100 * 100) / 100 + "%";
-        document.querySelector("#continentGrowthRateRel").innerHTML = Math.round((australia2018 - australia2008) / australia2008 * 100 * 100) / 100 + "%";
-        document.querySelector("#continentGrowthRateAbs").innerHTML = (australia2018 - australia2008).toString();
-    });
+    document.querySelector('.europe').addEventListener('click', function () { emissions(continentEurope, europe2018, europe2008); });
+    document.querySelector('.northamerica').addEventListener('click', function () { emissions(continentNorthAmerica, northAmerica2018, northAmerica2008); });
+    document.querySelector('.southamerica').addEventListener('click', function () { emissions(continentSouthAmerica, southAmerica2018, southAmerica2008); });
+    document.querySelector('.africa').addEventListener('click', function () { emissions(continentAfrica, africa2018, africa2008); });
+    document.querySelector('.asia').addEventListener('click', function () { emissions(continentAsia, asia2018, asia2008); });
+    document.querySelector('.australia').addEventListener('click', function () { emissions(continentAustralia, australia2018, australia2008); });
+    function emissions(continent, continent2018, continent2008) {
+        document.querySelector("#titleRegion").innerHTML = continent;
+        document.querySelector("#subtitleRegion").innerHTML = continent;
+        document.querySelector("#continent2018").innerHTML = continent2018.toString();
+        document.querySelector("#continentRelative").innerHTML = Math.round(continent2018 / entire2018 * 100 * 100) / 100 + "%";
+        document.querySelector("#continentGrowthRateRel").innerHTML = Math.round((continent2018 - continent2008) / continent2008 * 100 * 100) / 100 + "%";
+        document.querySelector("#continentGrowthRateAbs").innerHTML = (Math.round((continent2018 - continent2008) * 100) / 100).toString();
+        document.querySelector(".chartWrapper .chart").setAttribute('style', 'height:' + continent2018 / entire2018 * 100 + '%');
+    }
+    ;
 });
 //# sourceMappingURL=script.js.map
