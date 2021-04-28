@@ -13,7 +13,7 @@ var europe2018: number = 4209.3;
 var northAmerica2008: number = 6600.4;
 var northAmerica2018: number = 6035.6;
 var asia2008: number = 12954.7;
-var asia2018: number = 16274.2;
+var asia2018: number = 16274.1;
 var australia2008: number = 1993;
 var australia2018: number = 2100.5;
 var entire2018: number = africa2018 + southAmerica2018 + europe2018 + northAmerica2018 + asia2018 + australia2018;
@@ -27,7 +27,7 @@ window.addEventListener('load', function () {
     document.querySelector('.asia').addEventListener('click', function () { emissions(continentAsia, asia2018, asia2008) });
     document.querySelector('.australia').addEventListener('click', function () { emissions(continentAustralia, australia2018, australia2008) });
 
-    function emissions(continent: string, continent2018: number, continent2008: number) {
+    function emissions (continent: string, continent2018: number, continent2008: number) {
         document.querySelector("#titleRegion").innerHTML = continent;
         document.querySelector("#subtitleRegion").innerHTML = continent;
         document.querySelector("#continent2018").innerHTML = continent2018.toString();
