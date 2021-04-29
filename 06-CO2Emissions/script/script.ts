@@ -35,5 +35,6 @@ window.addEventListener('load', function () {
         document.querySelector("#continentGrowthRateRel").innerHTML = Math.round((continent2018 - continent2008) / continent2008 * 100 * 100) / 100 + "%";
         document.querySelector("#continentGrowthRateAbs").innerHTML = (Math.round((continent2018 - continent2008) * 100) / 100).toString();
         document.querySelector(".chartWrapper .chart").setAttribute('style', 'height:' + continent2018 / entire2018 * 100 + '%');
+        document.querySelector('#title').innerHTML = "Carbon Dioxide Emissions in ";
     };
 });

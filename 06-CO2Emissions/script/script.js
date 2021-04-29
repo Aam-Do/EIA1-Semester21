@@ -13,7 +13,7 @@ var europe2018 = 4209.3;
 var northAmerica2008 = 6600.4;
 var northAmerica2018 = 6035.6;
 var asia2008 = 12954.7;
-var asia2018 = 16274.2;
+var asia2018 = 16274.1;
 var australia2008 = 1993;
 var australia2018 = 2100.5;
 var entire2018 = africa2018 + southAmerica2018 + europe2018 + northAmerica2018 + asia2018 + australia2018;
@@ -32,6 +32,7 @@ window.addEventListener('load', function () {
         document.querySelector("#continentGrowthRateRel").innerHTML = Math.round((continent2018 - continent2008) / continent2008 * 100 * 100) / 100 + "%";
         document.querySelector("#continentGrowthRateAbs").innerHTML = (Math.round((continent2018 - continent2008) * 100) / 100).toString();
         document.querySelector(".chartWrapper .chart").setAttribute('style', 'height:' + continent2018 / entire2018 * 100 + '%');
+        document.querySelector('#title').innerHTML = "Carbon Dioxide Emissions in ";
     }
     ;
 });
