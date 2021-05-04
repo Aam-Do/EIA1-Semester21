@@ -1,0 +1,21 @@
+html, body {
+    background-color: black;
+}
+.drumpad {
+    margin: auto;
+    width: fit-content;
+    padding-top: 50px;
+    min-width: max-content;
+}
+.drumpad div {
+    display: inline;
+}
+.drumpad button {
+    padding: 75px;
+    margin: 6px;
+}
+.drumpad img {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+}
