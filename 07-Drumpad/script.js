@@ -1,4 +1,7 @@
 window.addEventListener('load', function () {
+    var path = 'assets/L07_task_material_assets_';
+    var name = ['kick', 'snare', 'hihat', 'A', 'C', 'F', 'G', 'laugh-1', 'laugh-2'];
+    var type = '';
     var samples = [new Audio('assets/L07_task_material_assets_kick.mp3'), new Audio('assets/L07_task_material_assets_snare.mp3'), new Audio('assets/L07_task_material_assets_hihat.mp3'), new Audio('assets/L07_task_material_assets_A.mp3'), new Audio('assets/L07_task_material_assets_C.mp3'), new Audio('assets/L07_task_material_assets_F.mp3'), new Audio('assets/L07_task_material_assets_G.mp3'), new Audio('assets/L07_task_material_assets_laugh-1.mp3'), new Audio('assets/L07_task_material_assets_laugh-2.mp3')];
     document.querySelector('#kick').addEventListener('click', function () { playSample(samples[0]); });
     document.querySelector('#snare').addEventListener('click', function () { playSample(samples[1]); });
@@ -44,18 +47,6 @@ window.addEventListener('load', function () {
         sample.play();
     }
     ;
-    // function repeat () {
-    //     if 
-    //     setInterval(drumMachine, 1000);
-    //     var machineSample: HTMLAudioElement[] = [new Audio('assets/L07_task_material_assets_kick.mp3'), new Audio('assets/L07_task_material_assets_snare.mp3'), new Audio('assets/L07_task_material_assets_kick.mp3'), new Audio('assets/L07_task_material_assets_kick.mp3'), new Audio('assets/L07_task_material_assets_snare.mp3'), new Audio('assets/L07_task_material_assets_kick.mp3'), new Audio('assets/L07_task_material_assets_snare.mp3'), new Audio('assets/L07_task_material_assets_kick.mp3'), new Audio('assets/L07_task_material_assets_kick.mp3'), new Audio('assets/L07_task_material_assets_snare.mp3'), new Audio('assets/L07_task_material_assets_hihat.mp3')]; 
-    //     var index: number = 0;
-    //     console.log(index);
-    //     function drumMachine (beat = machineSample[index]) {
-    //         beat.play();
-    //         index += 1;
-    //         if (index>10) index = 0;
-    //     };
-    // };
     var sampleKick = new Audio('assets/L07_task_material_assets_kick.mp3');
     var sampleSnare = new Audio('assets/L07_task_material_assets_snare.mp3');
     var sampleHihat = new Audio('assets/L07_task_material_assets_hihat.mp3');

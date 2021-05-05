@@ -1,6 +1,8 @@
 window.addEventListener('load', function () {
 
-
+    let path: string = 'assets/L07_task_material_assets_';
+    let name: string [] = ['kick', 'snare', 'hihat', 'A', 'C', 'F', 'G', 'laugh-1', 'laugh-2'];
+    let type: string = ''
 
 
     var samples: HTMLAudioElement[] = [new Audio('assets/L07_task_material_assets_kick.mp3'), new Audio('assets/L07_task_material_assets_snare.mp3'), new Audio('assets/L07_task_material_assets_hihat.mp3'), new Audio('assets/L07_task_material_assets_A.mp3'), new Audio('assets/L07_task_material_assets_C.mp3'), new Audio('assets/L07_task_material_assets_F.mp3'), new Audio('assets/L07_task_material_assets_G.mp3'), new Audio('assets/L07_task_material_assets_laugh-1.mp3'), new Audio('assets/L07_task_material_assets_laugh-2.mp3')]; 
@@ -48,22 +50,6 @@ window.addEventListener('load', function () {
     function playSample (sample = new Audio) {
         sample.play();  
     };
-
-
- 
- 
-    // function repeat () {
-    //     if 
-    //     setInterval(drumMachine, 1000);
-    //     var machineSample: HTMLAudioElement[] = [new Audio('assets/L07_task_material_assets_kick.mp3'), new Audio('assets/L07_task_material_assets_snare.mp3'), new Audio('assets/L07_task_material_assets_kick.mp3'), new Audio('assets/L07_task_material_assets_kick.mp3'), new Audio('assets/L07_task_material_assets_snare.mp3'), new Audio('assets/L07_task_material_assets_kick.mp3'), new Audio('assets/L07_task_material_assets_snare.mp3'), new Audio('assets/L07_task_material_assets_kick.mp3'), new Audio('assets/L07_task_material_assets_kick.mp3'), new Audio('assets/L07_task_material_assets_snare.mp3'), new Audio('assets/L07_task_material_assets_hihat.mp3')]; 
-    //     var index: number = 0;
-    //     console.log(index);
-    //     function drumMachine (beat = machineSample[index]) {
-    //         beat.play();
-    //         index += 1;
-    //         if (index>10) index = 0;
-    //     };
-    // };
 
     let sampleKick: HTMLAudioElement = new Audio('assets/L07_task_material_assets_kick.mp3');
     let sampleSnare: HTMLAudioElement = new Audio('assets/L07_task_material_assets_snare.mp3');
