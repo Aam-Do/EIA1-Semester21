@@ -50,9 +50,9 @@ window.addEventListener('load', function () {
         sample.play();  
     };
 
-    let sampleKick: HTMLAudioElement = new Audio('assets/L07_task_material_assets_kick.mp3');
-    let sampleSnare: HTMLAudioElement = new Audio('assets/L07_task_material_assets_snare.mp3');
-    let sampleHihat: HTMLAudioElement = new Audio('assets/L07_task_material_assets_hihat.mp3');
+    let sampleKick: HTMLAudioElement = samples[0];
+    let sampleSnare: HTMLAudioElement = samples[1];
+    let sampleHihat: HTMLAudioElement = samples[2];
 
     let aKick:  number[] = [1, 0, 0, 1, 0, 1 ,0, 0, 1, 0, 0, 1, 0, 1, 0, 0];
     let aSnare: number[] = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];

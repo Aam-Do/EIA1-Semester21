@@ -47,9 +47,9 @@ window.addEventListener('load', function () {
         sample.play();
     }
     ;
-    var sampleKick = new Audio('assets/L07_task_material_assets_kick.mp3');
-    var sampleSnare = new Audio('assets/L07_task_material_assets_snare.mp3');
-    var sampleHihat = new Audio('assets/L07_task_material_assets_hihat.mp3');
+    var sampleKick = samples[0];
+    var sampleSnare = samples[1];
+    var sampleHihat = samples[2];
     var aKick = [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0];
     var aSnare = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
     var aHihat = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
