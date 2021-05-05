@@ -4,7 +4,7 @@ window.addEventListener('load', function () {
     let name: string [] = ['kick', 'snare', 'hihat', 'A', 'C', 'F', 'G', 'laugh-1', 'laugh-2'];
     let type: string = '.mp3';
 
-    var samples: HTMLAudioElement[] = [new Audio(path + name[0] + type), new Audio(path + name[1] + type), new Audio(path + name[2] + type), new Audio(path + name[3] + type), new Audio(path + name[4] + type), new Audio(path + name[5] + type), new Audio(path + name[6] + type), new Audio(path + name[7] + type), new Audio(path + name[8] + type)]; 
+    let samples: HTMLAudioElement[] = [new Audio(path + name[0] + type), new Audio(path + name[1] + type), new Audio(path + name[2] + type), new Audio(path + name[3] + type), new Audio(path + name[4] + type), new Audio(path + name[5] + type), new Audio(path + name[6] + type), new Audio(path + name[7] + type), new Audio(path + name[8] + type)]; 
 
     document.querySelector('#kick').addEventListener('click', function () { playSample(samples[0]) });
     document.querySelector('#snare').addEventListener('click', function () { playSample(samples[1]) });
@@ -69,6 +69,5 @@ window.addEventListener('load', function () {
         index += 1;
         if (index>15) index = 0;
     };
-
 
 });
