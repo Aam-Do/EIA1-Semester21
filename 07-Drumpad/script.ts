@@ -42,7 +42,7 @@ window.addEventListener('load', function () {
         }
         else if(event.keyCode == 57) {
             playSample(samples[8]);
-        }
+        };
     });
     
     function playSample (sample = new Audio) {
@@ -65,26 +65,24 @@ window.addEventListener('load', function () {
     //     };
     // };
 
-    let sampleKick: HTMLAudioElement = new Audio('assets/L07_task_material_assets_kick.mp3')
-    let sampleSnare: HTMLAudioElement = new Audio('assets/L07_task_material_assets_snare.mp3')
-    let sampleHihat: HTMLAudioElement = new Audio('assets/L07_task_material_assets_hihat.mp3')
+    let sampleKick: HTMLAudioElement = new Audio('assets/L07_task_material_assets_kick.mp3');
+    let sampleSnare: HTMLAudioElement = new Audio('assets/L07_task_material_assets_snare.mp3');
+    let sampleHihat: HTMLAudioElement = new Audio('assets/L07_task_material_assets_hihat.mp3');
 
-    let aKick:  number[] = [1,0,0,1,0,1,0,0,1,0,0,1,0,1,0,0]
-    let aSnare: number[] = [0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0]
-    let aHihat: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
+    let aKick:  number[] = [1, 0, 0, 1, 0, 1 ,0, 0, 1, 0, 0, 1, 0, 1, 0, 0];
+    let aSnare: number[] = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
+    let aHihat: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
 
     let index: number = 0;
 
-    document.querySelector('#play').addEventListener('click', function () { drumMachine(aKick[index], aSnare[index], aHihat[index]) });
+    document.querySelector('#play').addEventListener('click', function () { setInterval(drumMachine, 270) });
 
-    setInterval(drumMachine, 1000);
-
-    function drumMachine (kick, snare, hihat) {
-        if (kick=1) sampleKick.play();
-        if (snare=1) sampleSnare.play();
-        if (hihat=1) sampleHihat.play ();
+    function drumMachine () {
+        if (aKick[index] ==1) sampleKick.play();
+        if (aSnare[index] ==1) sampleSnare.play();
+        if (aHihat[index] ==1) sampleHihat.play();
         index += 1;
-        if (index>16) index = 0;
+        if (index>15) index = 0;
     };
 
 

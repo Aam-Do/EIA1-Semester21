@@ -37,6 +37,7 @@ window.addEventListener('load', function () {
         else if (event.keyCode == 57) {
             playSample(samples[8]);
         }
+        ;
     });
     function playSample(sample) {
         if (sample === void 0) { sample = new Audio; }
@@ -62,17 +63,16 @@ window.addEventListener('load', function () {
     var aSnare = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
     var aHihat = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
     var index = 0;
-    document.querySelector('#play').addEventListener('click', function () { drumMachine(aKick[index], aSnare[index], aHihat[index]); });
-    setInterval(drumMachine, 1000);
-    function drumMachine(kick, snare, hihat) {
-        if (kick = 1)
+    document.querySelector('#play').addEventListener('click', function () { setInterval(drumMachine, 270); });
+    function drumMachine() {
+        if (aKick[index] == 1)
             sampleKick.play();
-        if (snare = 1)
+        if (aSnare[index] == 1)
             sampleSnare.play();
-        if (hihat = 1)
+        if (aHihat[index] == 1)
             sampleHihat.play();
         index += 1;
-        if (index > 16)
+        if (index > 15)
             index = 0;
     }
     ;
