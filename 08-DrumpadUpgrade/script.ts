@@ -54,7 +54,7 @@ window.addEventListener("load", function () {
     let sampleSnare: HTMLAudioElement = samples[1];
     let sampleHihat: HTMLAudioElement = samples[2];
 
-    let aKick:  number[] = [1, 0, 0, 1, 0, 1 ,0, 0, 1, 0, 0, 1, 0, 1, 0, 0];
+    let aKick:  number[] = [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0];
     let aSnare: number[] = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
     let aHihat: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
 
@@ -68,6 +68,6 @@ window.addEventListener("load", function () {
         if (aHihat[index] == 1) sampleHihat.play();
         index += 1;
         if (index > 15) index = 0;
-    };
+    }
 
 });

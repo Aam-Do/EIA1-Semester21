@@ -64,6 +64,5 @@ window.addEventListener("load", function () {
         if (index > 15)
             index = 0;
     }
-    ;
 });
 //# sourceMappingURL=script.js.map
