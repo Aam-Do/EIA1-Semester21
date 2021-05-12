@@ -52,8 +52,22 @@ window.addEventListener("load", function () {
     var aSnare = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
     var aHihat = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
     var index = 0;
-    document.querySelector("#play").addEventListener("click", function () { setInterval(drumMachine, 270); });
+    var button = document.querySelector("#button");
+    button.addEventListener("click", function () {
+        if (button.getAttribute("class") == "playbutton") {
+            button.setAttribute("class", "stopbutton");
+            console.log(button.getAttribute("class"));
+            // while (button.getAttribute("class") == "stopbutton") {
+            //   setInterval(drumMachine, 270); 
+            // }
+        }
+        else {
+            button.setAttribute("class", "playbutton");
+            console.log(button.getAttribute("class"));
+        }
+    });
     function drumMachine() {
+        // while (button.getAttribute("class") == "stopbutton") {
         if (aKick[index] == 1)
             sampleKick.play();
         if (aSnare[index] == 1)
@@ -63,6 +77,7 @@ window.addEventListener("load", function () {
         index += 1;
         if (index > 15)
             index = 0;
+        // }
     }
 });
 //# sourceMappingURL=script.js.map

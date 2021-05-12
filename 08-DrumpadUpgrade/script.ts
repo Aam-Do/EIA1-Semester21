@@ -60,14 +60,33 @@ window.addEventListener("load", function (): void {
 
     let index: number = 0;
 
-    document.querySelector("#play").addEventListener("click", function (): void { setInterval(drumMachine, 270); });
+    let button: HTMLElement = document.querySelector("#button");
+
+    button.addEventListener("click", function (): void {
+
+
+        if (button.getAttribute("class") == "playbutton") {
+            button.setAttribute("class", "stopbutton");
+            console.log(button.getAttribute("class"));
+            // while (button.getAttribute("class") == "stopbutton") {
+            //   setInterval(drumMachine, 270); 
+            // }
+        }
+        else {
+            button.setAttribute("class", "playbutton");
+            console.log(button.getAttribute("class"));
+        }
+
+    });
 
     function drumMachine (): void {
-        if (aKick[index] == 1) sampleKick.play();
-        if (aSnare[index] == 1) sampleSnare.play();
-        if (aHihat[index] == 1) sampleHihat.play();
-        index += 1;
-        if (index > 15) index = 0;
+        // while (button.getAttribute("class") == "stopbutton") {
+            if (aKick[index] == 1) sampleKick.play();
+            if (aSnare[index] == 1) sampleSnare.play();
+            if (aHihat[index] == 1) sampleHihat.play();
+            index += 1;
+            if (index > 15) index = 0;
+        // }
     }
 
 });
