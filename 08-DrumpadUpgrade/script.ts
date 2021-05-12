@@ -16,7 +16,7 @@ window.addEventListener("load", function (): void {
     document.querySelector("#laugh1").addEventListener("click", function (): void { playSample(samples[7]); });
     document.querySelector("#laugh2").addEventListener("click", function (): void { playSample(samples[8]); });
 
-    document.addEventListener("keydown", function(event) {
+    document.addEventListener("keydown", function(event: KeyboardEvent): void {
         if (event.keyCode == 49) {
             playSample(samples[0]);
         }
