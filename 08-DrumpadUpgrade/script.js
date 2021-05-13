@@ -43,6 +43,7 @@ window.addEventListener("load", function () {
     });
     function playSample(sample) {
         if (sample === void 0) { sample = new Audio; }
+        sample.currentTime = 0;
         sample.play();
     }
     var sampleKick = samples[0];
@@ -53,31 +54,30 @@ window.addEventListener("load", function () {
     var aHihat = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
     var index = 0;
     var button = document.querySelector("#button");
+    var interval;
     button.addEventListener("click", function () {
         if (button.getAttribute("class") == "playbutton") {
             button.setAttribute("class", "stopbutton");
             console.log(button.getAttribute("class"));
-            // while (button.getAttribute("class") == "stopbutton") {
-            //   setInterval(drumMachine, 270); 
-            // }
+            index = 0;
+            interval = setInterval(drumMachine, 200);
         }
         else {
             button.setAttribute("class", "playbutton");
             console.log(button.getAttribute("class"));
+            clearInterval(interval);
         }
     });
     function drumMachine() {
-        // while (button.getAttribute("class") == "stopbutton") {
         if (aKick[index] == 1)
-            sampleKick.play();
+            playSample(sampleKick);
         if (aSnare[index] == 1)
-            sampleSnare.play();
+            playSample(sampleSnare);
         if (aHihat[index] == 1)
-            sampleHihat.play();
+            playSample(sampleHihat);
         index += 1;
         if (index > 15)
             index = 0;
-        // }
     }
 });
 //# sourceMappingURL=script.js.map
