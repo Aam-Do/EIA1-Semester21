@@ -6,6 +6,19 @@ window.addEventListener("load", function (): void {
 
     let samples: HTMLAudioElement[] = [new Audio(path + name[0] + type), new Audio(path + name[1] + type), new Audio(path + name[2] + type), new Audio(path + name[3] + type), new Audio(path + name[4] + type), new Audio(path + name[5] + type), new Audio(path + name[6] + type), new Audio(path + name[7] + type), new Audio(path + name[8] + type)];
 
+    let beat1: number[] = [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0];
+    let beat2: number[] = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
+    let beat3: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
+
+    let playPauseButton: HTMLElement = document.querySelector("#playPause");
+    let stopButton: HTMLElement = document.querySelector("#stop");
+    let deleteButton: HTMLElement = document.querySelector("#delete");
+    let remixButton: HTMLElement = document.querySelector("#remix");
+
+    let interval: number;
+
+    let indexBeat: number = 0;
+
     document.querySelector("#kick").addEventListener("click", function (): void { playSample(samples[0]); });
     document.querySelector("#snare").addEventListener("click", function (): void { playSample(samples[1]); });
     document.querySelector("#hihat").addEventListener("click", function (): void { playSample(samples[2]); });
@@ -46,49 +59,64 @@ window.addEventListener("load", function (): void {
         }
     });
 
-    function playSample(sample: HTMLAudioElement = new Audio): void {
-        sample.currentTime = 0;
-        sample.play();
-    }
+    playPauseButton.addEventListener("click", function (): void {
 
-    let sampleKick: HTMLAudioElement = samples[0];
-    let sampleSnare: HTMLAudioElement = samples[1];
-    let sampleHihat: HTMLAudioElement = samples[2];
-
-    let aKick: number[] =  [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0];
-    let aSnare: number[] = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
-    let aHihat: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
-
-    let index: number = 0;
-
-    let button: HTMLElement = document.querySelector("#button");
-
-    let interval: number;
-
-    button.addEventListener("click", function (): void {
-
-
-        if (button.getAttribute("class") == "playbutton") {
-            button.setAttribute("class", "stopbutton");
-            console.log(button.getAttribute("class"));
-            
-            index = 0;
-            interval = setInterval(drumMachine, 200);
+        if (playPauseButton.classList.contains("playbutton")) {
+            playPauseButton.classList.remove("playbutton");
+            playPauseButton.classList.add("pausebutton");
+            console.log(playPauseButton.getAttribute("class"));
+            interval = setInterval(drumMachine, 250);
         }
         else {
-            button.setAttribute("class", "playbutton");
-            console.log(button.getAttribute("class"));
+            playPauseButton.classList.remove("pausebutton");
+            playPauseButton.classList.add("playbutton");
+            console.log(playPauseButton.getAttribute("class"));
             clearInterval(interval);
         }
+    });
+    stopButton.addEventListener("click", function (): void {
+        clearInterval(interval);
+        indexBeat = 0;
+        playPauseButton.classList.remove("pausebutton");
+        playPauseButton.classList.add("playbutton");
+        console.log(stopButton.getAttribute("class"));
+    });
 
+    deleteButton.addEventListener("click", function (): void {
+        for (let i: number = 0; i <= 15; i++) {
+            beat1.pop();
+            beat2.pop();
+            beat3.pop();
+        }
+    });
+
+    remixButton.addEventListener("click", function (): void {
+        for (let i: number = 0; i <= 15; i++) {
+            beat1.pop();
+            beat2.pop();
+            beat3.pop();
+        }
+        for (let i: number = 0; i <= 15; i++) {
+            beat1.push(Math.round(Math.random()));
+            beat2.push(Math.round(Math.random()));
+            beat3.push(Math.round(Math.random()));
+        }
+        console.log(beat1);
+        console.log(beat2);
+        console.log(beat3);
     });
 
     function drumMachine(): void {
-            if (aKick[index] == 1) playSample(sampleKick);
-            if (aSnare[index] == 1) playSample(sampleSnare);
-            if (aHihat[index] == 1) playSample(sampleHihat);
-            index += 1;
-            if (index > 15) index = 0;
+            if (beat1[indexBeat] == 1) playSample(samples[0]);
+            if (beat2[indexBeat] == 1) playSample(samples[1]);
+            if (beat3[indexBeat] == 1) playSample(samples[2]);
+            indexBeat += 1;
+            if (indexBeat > 15) indexBeat = 0;
+    }
+
+    function playSample(sample: HTMLAudioElement = new Audio): void {
+        sample.currentTime = 0;
+        sample.play();
     }
 
 });

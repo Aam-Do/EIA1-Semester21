@@ -3,6 +3,15 @@ window.addEventListener("load", function () {
     var name = ["kick", "snare", "hihat", "A", "C", "F", "G", "laugh-1", "laugh-2"];
     var type = ".mp3";
     var samples = [new Audio(path + name[0] + type), new Audio(path + name[1] + type), new Audio(path + name[2] + type), new Audio(path + name[3] + type), new Audio(path + name[4] + type), new Audio(path + name[5] + type), new Audio(path + name[6] + type), new Audio(path + name[7] + type), new Audio(path + name[8] + type)];
+    var beat1 = [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0];
+    var beat2 = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
+    var beat3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
+    var playPauseButton = document.querySelector("#playPause");
+    var stopButton = document.querySelector("#stop");
+    var deleteButton = document.querySelector("#delete");
+    var remixButton = document.querySelector("#remix");
+    var interval;
+    var indexBeat = 0;
     document.querySelector("#kick").addEventListener("click", function () { playSample(samples[0]); });
     document.querySelector("#snare").addEventListener("click", function () { playSample(samples[1]); });
     document.querySelector("#hihat").addEventListener("click", function () { playSample(samples[2]); });
@@ -41,43 +50,64 @@ window.addEventListener("load", function () {
             playSample(samples[8]);
         }
     });
+    playPauseButton.addEventListener("click", function () {
+        if (playPauseButton.classList.contains("playbutton")) {
+            playPauseButton.classList.remove("playbutton");
+            playPauseButton.classList.add("pausebutton");
+            console.log(playPauseButton.getAttribute("class"));
+            interval = setInterval(drumMachine, 250);
+        }
+        else {
+            playPauseButton.classList.remove("pausebutton");
+            playPauseButton.classList.add("playbutton");
+            console.log(playPauseButton.getAttribute("class"));
+            clearInterval(interval);
+        }
+    });
+    stopButton.addEventListener("click", function () {
+        clearInterval(interval);
+        indexBeat = 0;
+        playPauseButton.classList.remove("pausebutton");
+        playPauseButton.classList.add("playbutton");
+        console.log(stopButton.getAttribute("class"));
+    });
+    deleteButton.addEventListener("click", function () {
+        for (var i = 0; i <= 15; i++) {
+            beat1.pop();
+            beat2.pop();
+            beat3.pop();
+        }
+    });
+    remixButton.addEventListener("click", function () {
+        for (var i = 0; i <= 15; i++) {
+            beat1.pop();
+            beat2.pop();
+            beat3.pop();
+        }
+        for (var i = 0; i <= 15; i++) {
+            beat1.push(Math.round(Math.random()));
+            beat2.push(Math.round(Math.random()));
+            beat3.push(Math.round(Math.random()));
+        }
+        console.log(beat1);
+        console.log(beat2);
+        console.log(beat3);
+    });
+    function drumMachine() {
+        if (beat1[indexBeat] == 1)
+            playSample(samples[0]);
+        if (beat2[indexBeat] == 1)
+            playSample(samples[1]);
+        if (beat3[indexBeat] == 1)
+            playSample(samples[2]);
+        indexBeat += 1;
+        if (indexBeat > 15)
+            indexBeat = 0;
+    }
     function playSample(sample) {
         if (sample === void 0) { sample = new Audio; }
         sample.currentTime = 0;
         sample.play();
-    }
-    var sampleKick = samples[0];
-    var sampleSnare = samples[1];
-    var sampleHihat = samples[2];
-    var aKick = [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0];
-    var aSnare = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
-    var aHihat = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
-    var index = 0;
-    var button = document.querySelector("#button");
-    var interval;
-    button.addEventListener("click", function () {
-        if (button.getAttribute("class") == "playbutton") {
-            button.setAttribute("class", "stopbutton");
-            console.log(button.getAttribute("class"));
-            index = 0;
-            interval = setInterval(drumMachine, 200);
-        }
-        else {
-            button.setAttribute("class", "playbutton");
-            console.log(button.getAttribute("class"));
-            clearInterval(interval);
-        }
-    });
-    function drumMachine() {
-        if (aKick[index] == 1)
-            playSample(sampleKick);
-        if (aSnare[index] == 1)
-            playSample(sampleSnare);
-        if (aHihat[index] == 1)
-            playSample(sampleHihat);
-        index += 1;
-        if (index > 15)
-            index = 0;
     }
 });
 //# sourceMappingURL=script.js.map
