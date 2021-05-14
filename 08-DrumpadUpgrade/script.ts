@@ -18,6 +18,7 @@ window.addEventListener("load", function (): void {
     let stopButton: HTMLElement = document.querySelector("#stop");
     let deleteButton: HTMLElement = document.querySelector("#delete");
     let remixButton: HTMLElement = document.querySelector("#remix");
+    let resetButton: HTMLElement = document.querySelector("#reset");
 
     let interval: number;
 
@@ -89,6 +90,17 @@ window.addEventListener("load", function (): void {
         }
     });
 
+    resetButton.addEventListener("click", function (): void {
+        beat1 = [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0];
+        beat2 = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
+        beat3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
+    
+        beat1Sample = 0;
+        beat2Sample = 1;
+        beat3Sample = 2;
+        indexBeat = 0;
+    });
+
     remixButton.addEventListener("click", function (): void {
         for (let i: number = 0; i <= 15; i++) {
             beat1.pop();
@@ -103,6 +115,7 @@ window.addEventListener("load", function (): void {
         beat1Sample = Math.floor(Math.random() * (6 - 0 + 1));
         beat2Sample = Math.floor(Math.random() * (6 - 0 + 1));
         beat3Sample = Math.floor(Math.random() * (6 - 0 + 1));
+        indexBeat = 0;
     });
 
     function drumMachine(): void {

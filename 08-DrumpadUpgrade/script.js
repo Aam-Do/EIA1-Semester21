@@ -13,6 +13,7 @@ window.addEventListener("load", function () {
     var stopButton = document.querySelector("#stop");
     var deleteButton = document.querySelector("#delete");
     var remixButton = document.querySelector("#remix");
+    var resetButton = document.querySelector("#reset");
     var interval;
     var indexBeat = 0;
     document.querySelector("#kick").addEventListener("click", function () { playSample(samples[0]); });
@@ -75,6 +76,15 @@ window.addEventListener("load", function () {
             beat3.pop();
         }
     });
+    resetButton.addEventListener("click", function () {
+        beat1 = [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0];
+        beat2 = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
+        beat3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
+        beat1Sample = 0;
+        beat2Sample = 1;
+        beat3Sample = 2;
+        indexBeat = 0;
+    });
     remixButton.addEventListener("click", function () {
         for (var i = 0; i <= 15; i++) {
             beat1.pop();
@@ -89,6 +99,7 @@ window.addEventListener("load", function () {
         beat1Sample = Math.floor(Math.random() * (6 - 0 + 1));
         beat2Sample = Math.floor(Math.random() * (6 - 0 + 1));
         beat3Sample = Math.floor(Math.random() * (6 - 0 + 1));
+        indexBeat = 0;
     });
     function drumMachine() {
         if (beat1[indexBeat] == 1)
