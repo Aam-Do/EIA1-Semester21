@@ -4,7 +4,7 @@ html, body {
 .drumpad {
     margin: auto;
     width: fit-content;
-    padding-top: 50px;
+    padding-top: 60px;
     min-width: max-content;
 }
 .drumpad div {
@@ -40,6 +40,21 @@ html, body {
     margin: auto;
     margin-top: 20px;
 }
-.fas {
+#nav {
+    position: absolute;
+    top: 64%;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 70px;
     color: white;
+    transition-duration: .3s;
+}
+.fas {
+    margin: 10px;
+}
+.fas:hover {
+    transform: scale(1.05);
+}
+.fas:active {
+    transform: scale(0.99);
 }

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" async></script>
-    <script src="https://kit.fontawesome.com/d115f07cb1.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/d115f07cb1.js" crossorigin="anonymous" async></script>
     <title>Drumpad</title>
 </head>
 <body>
@@ -26,13 +26,12 @@
             <button id="laugh1"></button>
             <button id="laugh2"></button>
         </div>
-        <span>
-             <i class="fas fa-play"></i>
-        </span>
-        <img id="playPause" class= "playbutton" src="images/play-button.png" alt="Play">
-        <img id="stop" src="images/play-button.png" alt="Stop">
-        <p style="color: white;" id="delete">delete</p>
-        <p style="color: white;" id="remix">remix</p>
     </div>
+    <span id="nav">
+        <i id="playPause" class="fas fa-play"></i>
+        <i id="stop" class="fas fa-stop"></i>
+        <i id="remix" class="fas fa-random"></i>
+        <i id="delete" class="fas fa-trash-alt"></i>
+    </span>
 </body>
 </html>

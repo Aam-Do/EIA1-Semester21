@@ -1,11 +1,14 @@
 window.addEventListener("load", function () {
     var path = "assets/L07_task_material_assets_";
-    var name = ["kick", "snare", "hihat", "A", "C", "F", "G", "laugh-1", "laugh-2"];
+    var name = ["kick", "snare", "hihat", "E", "G", "C", "D", "laugh-1", "laugh-2"];
     var type = ".mp3";
     var samples = [new Audio(path + name[0] + type), new Audio(path + name[1] + type), new Audio(path + name[2] + type), new Audio(path + name[3] + type), new Audio(path + name[4] + type), new Audio(path + name[5] + type), new Audio(path + name[6] + type), new Audio(path + name[7] + type), new Audio(path + name[8] + type)];
     var beat1 = [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0];
     var beat2 = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
     var beat3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
+    var beat1Sample = 0;
+    var beat2Sample = 1;
+    var beat3Sample = 2;
     var playPauseButton = document.querySelector("#playPause");
     var stopButton = document.querySelector("#stop");
     var deleteButton = document.querySelector("#delete");
@@ -51,25 +54,19 @@ window.addEventListener("load", function () {
         }
     });
     playPauseButton.addEventListener("click", function () {
-        if (playPauseButton.classList.contains("playbutton")) {
-            playPauseButton.classList.remove("playbutton");
-            playPauseButton.classList.add("pausebutton");
-            console.log(playPauseButton.getAttribute("class"));
+        if (playPauseButton.getAttribute("class") == "fas fa-play") {
+            playPauseButton.setAttribute("class", "fas fa-pause");
             interval = setInterval(drumMachine, 250);
         }
         else {
-            playPauseButton.classList.remove("pausebutton");
-            playPauseButton.classList.add("playbutton");
-            console.log(playPauseButton.getAttribute("class"));
+            playPauseButton.setAttribute("class", "fas fa-play");
             clearInterval(interval);
         }
     });
     stopButton.addEventListener("click", function () {
         clearInterval(interval);
         indexBeat = 0;
-        playPauseButton.classList.remove("pausebutton");
-        playPauseButton.classList.add("playbutton");
-        console.log(stopButton.getAttribute("class"));
+        playPauseButton.setAttribute("class", "fas fa-play");
     });
     deleteButton.addEventListener("click", function () {
         for (var i = 0; i <= 15; i++) {
@@ -89,17 +86,17 @@ window.addEventListener("load", function () {
             beat2.push(Math.round(Math.random()));
             beat3.push(Math.round(Math.random()));
         }
-        console.log(beat1);
-        console.log(beat2);
-        console.log(beat3);
+        beat1Sample = Math.floor(Math.random() * (6 - 0 + 1));
+        beat2Sample = Math.floor(Math.random() * (6 - 0 + 1));
+        beat3Sample = Math.floor(Math.random() * (6 - 0 + 1));
     });
     function drumMachine() {
         if (beat1[indexBeat] == 1)
-            playSample(samples[0]);
+            playSample(samples[beat1Sample]);
         if (beat2[indexBeat] == 1)
-            playSample(samples[1]);
+            playSample(samples[beat2Sample]);
         if (beat3[indexBeat] == 1)
-            playSample(samples[2]);
+            playSample(samples[beat3Sample]);
         indexBeat += 1;
         if (indexBeat > 15)
             indexBeat = 0;
