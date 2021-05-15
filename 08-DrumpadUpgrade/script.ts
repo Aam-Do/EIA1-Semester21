@@ -27,13 +27,12 @@ window.addEventListener("load", function (): void {
     document.querySelector("#kick").addEventListener("click", function (): void { playSample(samples[0]); });
     document.querySelector("#snare").addEventListener("click", function (): void { playSample(samples[1]); });
     document.querySelector("#hihat").addEventListener("click", function (): void { playSample(samples[2]); });
-    document.querySelector("#A").addEventListener("click", function (): void { playSample(samples[3]); });
-    document.querySelector("#C").addEventListener("click", function (): void { playSample(samples[4]); });
-    document.querySelector("#F").addEventListener("click", function (): void { playSample(samples[5]); });
-    document.querySelector("#G").addEventListener("click", function (): void { playSample(samples[6]); });
+    document.querySelector("#E").addEventListener("click", function (): void { playSample(samples[3]); });
+    document.querySelector("#G").addEventListener("click", function (): void { playSample(samples[4]); });
+    document.querySelector("#C").addEventListener("click", function (): void { playSample(samples[5]); });
+    document.querySelector("#D").addEventListener("click", function (): void { playSample(samples[6]); });
     document.querySelector("#laugh1").addEventListener("click", function (): void { playSample(samples[7]); });
     document.querySelector("#laugh2").addEventListener("click", function (): void { playSample(samples[8]); });
-
     document.addEventListener("keydown", function (event: KeyboardEvent): void {
         if (event.keyCode == 49) {
             playSample(samples[0]);
@@ -63,34 +62,43 @@ window.addEventListener("load", function (): void {
             playSample(samples[8]);
         }
     });
+    playPauseButton.addEventListener("click", function (): void { playPauseBeat(); });
+    stopButton.addEventListener("click", function (): void { stopBeat(); });
+    deleteButton.addEventListener("click", function (): void { deleteBeat(); });
+    resetButton.addEventListener("click", function (): void { resetBeat(); });
+    remixButton.addEventListener("click", function (): void { remixBeat(); });
+    // recordButton.addEventListener("click", function (): void { recordBeat(); });
 
-    playPauseButton.addEventListener("click", function (): void {
+    // function recordBeat(): void {
+    // ???
+    // }
 
+    function playPauseBeat(): void {
         if (playPauseButton.getAttribute("class") == "fas fa-play") {
             playPauseButton.setAttribute("class", "fas fa-pause");
-            interval = setInterval(drumMachine, 250);
+            interval = setInterval(playBeatMachine, 250);
         }
         else {
             playPauseButton.setAttribute("class", "fas fa-play");
             clearInterval(interval);
         }
-    });
+    }
 
-    stopButton.addEventListener("click", function (): void {
+    function stopBeat(): void {
         clearInterval(interval);
         indexBeat = 0;
         playPauseButton.setAttribute("class", "fas fa-play");
-    });
+    }
 
-    deleteButton.addEventListener("click", function (): void {
+    function deleteBeat(): void {
         for (let i: number = 0; i <= 15; i++) {
             beat1.pop();
             beat2.pop();
             beat3.pop();
         }
-    });
+    }
 
-    resetButton.addEventListener("click", function (): void {
+    function resetBeat(): void {
         beat1 = [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0];
         beat2 = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
         beat3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
@@ -99,9 +107,9 @@ window.addEventListener("load", function (): void {
         beat2Sample = 1;
         beat3Sample = 2;
         indexBeat = 0;
-    });
+    }
 
-    remixButton.addEventListener("click", function (): void {
+    function remixBeat(): void {
         for (let i: number = 0; i <= 15; i++) {
             beat1.pop();
             beat2.pop();
@@ -116,9 +124,9 @@ window.addEventListener("load", function (): void {
         beat2Sample = Math.floor(Math.random() * (6 - 0 + 1));
         beat3Sample = Math.floor(Math.random() * (6 - 0 + 1));
         indexBeat = 0;
-    });
+    }
 
-    function drumMachine(): void {
+    function playBeatMachine(): void {
             if (beat1[indexBeat] == 1) playSample(samples[beat1Sample]);
             if (beat2[indexBeat] == 1) playSample(samples[beat2Sample]);
             if (beat3[indexBeat] == 1) playSample(samples[beat3Sample]);
