@@ -19,10 +19,10 @@ window.addEventListener("load", function () {
     document.querySelector("#kick").addEventListener("click", function () { playSample(samples[0]); });
     document.querySelector("#snare").addEventListener("click", function () { playSample(samples[1]); });
     document.querySelector("#hihat").addEventListener("click", function () { playSample(samples[2]); });
-    document.querySelector("#A").addEventListener("click", function () { playSample(samples[3]); });
-    document.querySelector("#C").addEventListener("click", function () { playSample(samples[4]); });
-    document.querySelector("#F").addEventListener("click", function () { playSample(samples[5]); });
-    document.querySelector("#G").addEventListener("click", function () { playSample(samples[6]); });
+    document.querySelector("#E").addEventListener("click", function () { playSample(samples[3]); });
+    document.querySelector("#G").addEventListener("click", function () { playSample(samples[4]); });
+    document.querySelector("#C").addEventListener("click", function () { playSample(samples[5]); });
+    document.querySelector("#D").addEventListener("click", function () { playSample(samples[6]); });
     document.querySelector("#laugh1").addEventListener("click", function () { playSample(samples[7]); });
     document.querySelector("#laugh2").addEventListener("click", function () { playSample(samples[8]); });
     document.addEventListener("keydown", function (event) {
@@ -54,29 +54,38 @@ window.addEventListener("load", function () {
             playSample(samples[8]);
         }
     });
-    playPauseButton.addEventListener("click", function () {
+    playPauseButton.addEventListener("click", function () { playPauseBeat(); });
+    stopButton.addEventListener("click", function () { stopBeat(); });
+    deleteButton.addEventListener("click", function () { deleteBeat(); });
+    resetButton.addEventListener("click", function () { resetBeat(); });
+    remixButton.addEventListener("click", function () { remixBeat(); });
+    // recordButton.addEventListener("click", function (): void { recordBeat(); });
+    // function recordBeat(): void {
+    // ???
+    // }
+    function playPauseBeat() {
         if (playPauseButton.getAttribute("class") == "fas fa-play") {
             playPauseButton.setAttribute("class", "fas fa-pause");
-            interval = setInterval(drumMachine, 250);
+            interval = setInterval(playBeatMachine, 250);
         }
         else {
             playPauseButton.setAttribute("class", "fas fa-play");
             clearInterval(interval);
         }
-    });
-    stopButton.addEventListener("click", function () {
+    }
+    function stopBeat() {
         clearInterval(interval);
         indexBeat = 0;
         playPauseButton.setAttribute("class", "fas fa-play");
-    });
-    deleteButton.addEventListener("click", function () {
+    }
+    function deleteBeat() {
         for (var i = 0; i <= 15; i++) {
             beat1.pop();
             beat2.pop();
             beat3.pop();
         }
-    });
-    resetButton.addEventListener("click", function () {
+    }
+    function resetBeat() {
         beat1 = [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0];
         beat2 = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
         beat3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
@@ -84,8 +93,8 @@ window.addEventListener("load", function () {
         beat2Sample = 1;
         beat3Sample = 2;
         indexBeat = 0;
-    });
-    remixButton.addEventListener("click", function () {
+    }
+    function remixBeat() {
         for (var i = 0; i <= 15; i++) {
             beat1.pop();
             beat2.pop();
@@ -100,8 +109,8 @@ window.addEventListener("load", function () {
         beat2Sample = Math.floor(Math.random() * (6 - 0 + 1));
         beat3Sample = Math.floor(Math.random() * (6 - 0 + 1));
         indexBeat = 0;
-    });
-    function drumMachine() {
+    }
+    function playBeatMachine() {
         if (beat1[indexBeat] == 1)
             playSample(samples[beat1Sample]);
         if (beat2[indexBeat] == 1)
