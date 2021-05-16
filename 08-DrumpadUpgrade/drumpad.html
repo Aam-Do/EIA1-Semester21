@@ -10,29 +10,37 @@
     <title>Drumpad</title>
 </head>
 <body>
+    <span id="instructions">
+        <p>Press <i class="fas fa-play" alt="Play button"></i> to start the Drum Machine</p>
+        <p>Press <i class="fas fa-pause" alt="Pause button"></i> to pause the Drum Machine</p>
+        <p>Press <i class="fas fa-stop" alt="Stop button"></i> to stop the Drum Machine</p>
+        <p>Press <i class="fas fa-random" alt="Remix button"></i></i> to set a randomly generated beat <br> (Will not include laughing samples)</p>
+        <p>Press <i class="fas fa-trash-alt" alt="Delete button"></i> to delete the current beat</p>
+        <p>Press <i class="fas fa-undo-alt" alt="Reset button"></i> to restore the default beat</p>
+    </span>
     <div class="drumpad">
         <div id="beats">
-            <button id="kick"></button>
-            <button id="snare"></button>
-            <button id="hihat"></button> <br>
+            <button id="kick" alt="drumpad button kick"></button>
+            <button id="snare" alt="drumpad button snare"></button>
+            <button id="hihat" alt="drumpad button hihat"></button> <br>
         </div>
         <div id="notes">
-            <button id="E"></button>
-            <button id="G"></button>
-            <button id="C"></button> <br>
-            <button id="D"></button>
+            <button id="E" alt="drumpad button Kalimba E"></button>
+            <button id="G" alt="drumpad button Kalimba G"></button>
+            <button id="C" alt="drumpad button Kalimba C"></button> <br>
+            <button id="D" alt="drumpad button Kalimba D"></button>
         </div>
         <div id="laughs">
-            <button id="laugh1"></button>
-            <button id="laugh2"></button>
+            <button id="laugh1" alt="drumpad button santa laugh 1"></button>
+            <button id="laugh2" alt="drumpad button santa laugh 2"></button>
         </div>
     </div>
     <span id="nav">
-        <i id="playPause" class="fas fa-play" title="Play/Pause"></i>
-        <i id="stop" class="fas fa-stop" title="Stop"></i>
-        <i id="remix" class="fas fa-random" title="Remix"></i>
-        <i id="delete" class="fas fa-trash-alt" title="Delete"></i>
-        <i id="reset" class="fas fa-undo-alt" title="Reset"></i>
+        <i id="playPause" class="fas fa-play" title="Play/Pause" alt="Play/Pause button"></i>
+        <i id="stop" class="fas fa-stop" title="Stop" alt="Stop button"></i>
+        <i id="remix" class="fas fa-random" title="Remix" alt="Remix button"></i>
+        <i id="delete" class="fas fa-trash-alt" title="Delete" alt="Delete button"></i>
+        <i id="reset" class="fas fa-undo-alt" title="Reset" alt="Reset button"></i>
     </span>
 </body>
 </html>
