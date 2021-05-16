@@ -21,7 +21,6 @@ window.addEventListener("load", function (): void {
     let resetButton: HTMLElement = document.querySelector("#reset");
 
     let interval: number;
-
     let indexBeat: number = 0;
 
     document.querySelector("#kick").addEventListener("click", function (): void { playSample(samples[0]); });
@@ -67,11 +66,6 @@ window.addEventListener("load", function (): void {
     deleteButton.addEventListener("click", function (): void { deleteBeat(); });
     resetButton.addEventListener("click", function (): void { resetBeat(); });
     remixButton.addEventListener("click", function (): void { remixBeat(); });
-    // recordButton.addEventListener("click", function (): void { recordBeat(); });
-
-    // function recordBeat(): void {
-    // ???
-    // }
 
     function playPauseBeat(): void {
         if (playPauseButton.getAttribute("class") == "fas fa-play") {

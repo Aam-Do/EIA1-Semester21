@@ -59,10 +59,6 @@ window.addEventListener("load", function () {
     deleteButton.addEventListener("click", function () { deleteBeat(); });
     resetButton.addEventListener("click", function () { resetBeat(); });
     remixButton.addEventListener("click", function () { remixBeat(); });
-    // recordButton.addEventListener("click", function (): void { recordBeat(); });
-    // function recordBeat(): void {
-    // ???
-    // }
     function playPauseBeat() {
         if (playPauseButton.getAttribute("class") == "fas fa-play") {
             playPauseButton.setAttribute("class", "fas fa-pause");
