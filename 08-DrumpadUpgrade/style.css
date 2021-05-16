@@ -30,24 +30,43 @@ html, body {
     border-radius: 8px;
     border-style: solid;
     border-width: 2px;
+    transition-duration: .9s;
 }
 #beats button {
-    background: linear-gradient(0deg, #175af4 0%, #6faeff 100%);
+    background: radial-gradient(circle, rgb(53, 94, 180) 0%, rgb(3, 8, 14) 100%);
     border-color: #356ef3;
-    border-top-color: #b1c9ff;
+    border-top-color: #92aeee;
     border-bottom-color: #173986;
 }
+#beats button:hover {
+    background: radial-gradient(circle, rgb(52, 116, 255) 10%, rgb(3, 8, 14) 100%);
+}
+#beats button:active {
+    background: radial-gradient(circle, rgb(52, 116, 255) 0%, rgb(3, 8, 14) 90%);
+}
 #notes button {
-    background: linear-gradient(0deg, #e31852 0%, #ff779c 100%);
+    background: radial-gradient(circle, rgb(161, 52, 79) 0%, rgb(3, 8, 14) 100%);
     border-color: #eb4b78;
-    border-top-color: #ffacc3;
+    border-top-color: #e785a1;
     border-bottom-color: #850a2d;
 }
+#notes button:hover {
+    background: radial-gradient(circle, rgb(236, 56, 101) 10%, rgb(3, 8, 14) 100%);
+}
+#notes button:active {
+    background: radial-gradient(circle, rgb(236, 56, 101) 0%, rgb(3, 8, 14) 100%);
+}
 #laughs button {
-    background: linear-gradient(0deg, #f68a1d 0%, #ffdc73 100%);
+    background: radial-gradient(circle, rgb(172, 141, 57) 0%, rgb(3, 8, 14) 90%);
     border-color: #f3a354;
-    border-top-color: #ffefcc;
+    border-top-color: #ebd3a0;
     border-bottom-color: #a74b00;
+}
+#laughs button:hover {
+    background: radial-gradient(circle, rgb(230, 182, 51) 10%, rgb(3, 8, 14) 100%);
+}
+#laughs button:active {
+    background: radial-gradient(circle, rgb(230, 182, 51) 0%, rgb(3, 8, 14) 90%);
 }
 .drumpad img {
     display: block;
