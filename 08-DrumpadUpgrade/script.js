@@ -107,7 +107,13 @@ window.addEventListener("load", function () {
         }
         beat1Sample = Math.floor(Math.random() * (6 - 0 + 1));
         beat2Sample = Math.floor(Math.random() * (6 - 0 + 1));
+        while (beat2Sample == beat1Sample) {
+            beat2Sample = Math.floor(Math.random() * (6 - 0 + 1));
+        }
         beat3Sample = Math.floor(Math.random() * (6 - 0 + 1));
+        while (beat3Sample == beat1Sample || beat3Sample == beat2Sample) {
+            beat3Sample = Math.floor(Math.random() * (6 - 0 + 1));
+        }
         indexBeat = 0;
     }
     function playBeatMachine() {
