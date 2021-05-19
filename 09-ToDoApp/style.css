@@ -1,0 +1,21 @@
+html {
+    background-color: rgb(219, 231, 216);
+}
+header, body {
+    max-width: 500px;
+    margin: auto;
+}
+h1, h3 {
+    text-align: center;
+}
+#toDos #addToDo, #toDos p, input{
+    margin: 2px;
+    padding: 20px;
+    background-color: rgb(245, 255, 245);
+    border: none;
+    width: 500px;
+}
+p {
+    box-shadow: 2px 2px 5px rgba(107, 107, 107, 0.739);
+}
+
