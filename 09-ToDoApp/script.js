@@ -35,7 +35,7 @@ window.addEventListener("load", function () {
             newToDo.appendChild(node);
             newToDo.setAttributeNode(idToDo);
             list.appendChild(newToDo);
-            checkbox.addEventListener("click", function () { checkToDo(); });
+            // checkbox.addEventListener("click", function (): void {checkToDo(); });
         }
         toDoInput.value = "";
     }

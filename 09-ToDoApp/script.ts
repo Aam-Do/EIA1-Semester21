@@ -50,7 +50,7 @@ window.addEventListener("load", function (): void {
 
             list.appendChild(newToDo);
             
-            checkbox.addEventListener("click", function (): void {checkToDo(); });
+            // checkbox.addEventListener("click", function (): void {checkToDo(); });
         }
         toDoInput.value = "";
     }
