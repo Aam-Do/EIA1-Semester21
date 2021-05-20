@@ -8,14 +8,17 @@ header, body {
 h1, h3 {
     text-align: center;
 }
-#toDos #addToDo, #toDos p, input{
+#toDos #addToDo, #toDos li, input{
     margin: 2px;
     padding: 20px;
     background-color: rgb(245, 255, 245);
     border: none;
     width: 500px;
 }
-p {
+li {
     box-shadow: 2px 2px 5px rgba(107, 107, 107, 0.739);
 }
-
+ul {
+    list-style: none;
+    padding-left: 0;
+}
