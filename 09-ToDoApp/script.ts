@@ -11,8 +11,7 @@ window.addEventListener("load", function (): void {
     toDoInput.addEventListener("keydown", function (event: KeyboardEvent): void {
         if (event.keyCode == 13) {
 
-            let length: number = allToDos.length;
-            allToDos.push({checked: false, content: toDoInput.value, toDoId: length.toString(), checkmarkId: "check" + length.toString(), trashId: "trash" + length.toString()});
+            allToDos.push({checked: false, content: toDoInput.value, toDoId: "", checkmarkId: "", trashId: ""});
             console.log(allToDos);
 
             displayList();
@@ -25,21 +24,26 @@ window.addEventListener("load", function (): void {
         for (let i: number = 0; i < allToDos.length; i++) {
             let todo: ToDo = allToDos[i];
 
+            todo.toDoId = i.toString();
+            todo.checkmarkId = "check" + i.toString();
+            todo.trashId = "trash" + i.toString();
+
             let newToDo: HTMLLIElement = document.createElement("li");
             let node: Node = document.createTextNode(todo.content);
-
             let idToDo: Attr = document.createAttribute("id");
             let idChecked: Attr = document.createAttribute("id");
             let idTrash: Attr = document.createAttribute("id");
-            idToDo.value = i.toString();
-            idChecked.value = "check" + i.toString();
-            idTrash.value = "trash" + i.toString();
+
+            idToDo.value = todo.toDoId;
+            idChecked.value = todo.checkmarkId;
+            idTrash.value = todo.trashId;
 
             let checkbox: HTMLElement = document.createElement("i");
             let checked: Attr = document.createAttribute("class");
 
             let trashIcon: HTMLElement = document.createElement("i");
             let trash: Attr = document.createAttribute("class");
+
             trash.value = "far fa-trash-alt";
             trashIcon.setAttributeNode(trash);
 
@@ -61,15 +65,25 @@ window.addEventListener("load", function (): void {
             list.appendChild(newToDo);
             
             checkbox.addEventListener("click", function (): void {checkToDo(idChecked.value); });
+            trashIcon.addEventListener("click", function (): void {deleteToDo(idTrash.value); });
+        }
+        if (allToDos.length != 1) {
+            document.querySelector("#numberOfToDos").innerHTML = (allToDos.length).toString() + " tasks";
+        }
+        else {
+            document.querySelector("#numberOfToDos").innerHTML = (allToDos.length).toString() + " task";
         }
         toDoInput.value = "";
     }
 
     function checkToDo(id: string): void {
+
         for (let i: number = 0; i < allToDos.length; i++) {
             let todo: ToDo = allToDos[i];
+
             if (todo.checkmarkId == id) {
                 let check: HTMLElement = document.querySelector("#" + id);
+
                 if (todo.checked == false) {
                     check.setAttribute("class", "fas fa-check-circle");
                     todo.checked = true;
@@ -84,7 +98,18 @@ window.addEventListener("load", function (): void {
         }
     }
             
+    function deleteToDo(id: string): void {
 
+        for (let i: number = 0; i < allToDos.length; i++) {
+            let todo: ToDo = allToDos[i];
+
+            if (todo.trashId == id) {
+                allToDos.splice(i, 1);
+            }
+        }
+
+        displayList();
+    }
 
 
 

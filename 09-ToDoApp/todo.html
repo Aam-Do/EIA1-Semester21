@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bitter&family=KoHo:wght@500&family=Lato:ital@1&family=Patua+One&display=swap" rel="stylesheet">
     <script src="script.js"></script>
     <script src="https://kit.fontawesome.com/d115f07cb1.js" crossorigin="anonymous" async></script>
     <title>ToDo App</title>
@@ -13,17 +15,15 @@
     <h1>ToDo App</h1>
 </header>
 <body>
-    <h3><span id="numberOfToDos">0</span> tasks in total</h3>
+    <h3><span id="numberOfToDos">0 tasks</span> in total</h3>
     <div id="content">
-        <input type="text" name="toDoInput" id="toDoInput" value="">
+        <input type="text" name="toDoInput" id="toDoInput" value="" placeholder="Add new task">
         <ul id="toDos">
             <li>
-                <i class="far fa-circle"></i> Example ToDo
-                <i class="far fa-trash-alt"></i>
+                <i class="far fa-circle"></i>Example ToDo<i class="far fa-trash-alt"></i>
             </li>
             <li>
-                <i class="far fa-circle"></i> Example ToDo
-                <i class="far fa-trash-alt"></i>
+                <i class="far fa-circle"></i>Example ToDo but with more words to see how it would look like smile<i class="far fa-trash-alt"></i>
             </li>
         </ul>
     </div>

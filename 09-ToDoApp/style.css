@@ -8,12 +8,29 @@ header, body {
 h1, h3 {
     text-align: center;
 }
+h1 {
+    font-family: 'Patua One', cursive;
+    font-size: 50px;
+}
+h3 {
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    margin-bottom: 40px;
+    opacity: 50%;
+}
 #toDos #addToDo, #toDos li, input{
     margin: 2px;
-    padding: 20px;
+    padding: 20px 20px 20px 20px;
     background-color: rgb(245, 255, 245);
     border: none;
     width: 500px;
+    font-size: 20px;
+    color: rgb(91, 121, 91);
+}
+input {
+    font-size: 18px;
+    font-family: 'KoHo', sans-serif;
+    margin-bottom: -10px;
 }
 li {
     box-shadow: 2px 2px 5px rgba(107, 107, 107, 0.739);
@@ -21,4 +38,18 @@ li {
 ul {
     list-style: none;
     padding-left: 0;
+    font-family: 'Bitter', serif;
 }
+.fa-circle, .fa-check-circle {
+    padding: 2px 15px 2px 5px;
+    float: left;
+    cursor: pointer;
+}
+.fa-trash-alt {
+    float: right;
+    cursor: pointer;
+    visibility: hidden;
+}
+li:hover > .fa-trash-alt {
+    visibility: visible;
+  }

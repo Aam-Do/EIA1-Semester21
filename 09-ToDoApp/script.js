@@ -5,8 +5,7 @@ window.addEventListener("load", function () {
     console.log(allToDos);
     toDoInput.addEventListener("keydown", function (event) {
         if (event.keyCode == 13) {
-            var length_1 = allToDos.length;
-            allToDos.push({ checked: false, content: toDoInput.value, toDoId: length_1.toString(), checkmarkId: "check" + length_1.toString(), trashId: "trash" + length_1.toString() });
+            allToDos.push({ checked: false, content: toDoInput.value, toDoId: "", checkmarkId: "", trashId: "" });
             console.log(allToDos);
             displayList();
         }
@@ -15,14 +14,17 @@ window.addEventListener("load", function () {
         list.innerHTML = "";
         var _loop_1 = function (i) {
             var todo = allToDos[i];
+            todo.toDoId = i.toString();
+            todo.checkmarkId = "check" + i.toString();
+            todo.trashId = "trash" + i.toString();
             var newToDo = document.createElement("li");
             var node = document.createTextNode(todo.content);
             var idToDo = document.createAttribute("id");
             var idChecked = document.createAttribute("id");
             var idTrash = document.createAttribute("id");
-            idToDo.value = i.toString();
-            idChecked.value = "check" + i.toString();
-            idTrash.value = "trash" + i.toString();
+            idToDo.value = todo.toDoId;
+            idChecked.value = todo.checkmarkId;
+            idTrash.value = todo.trashId;
             var checkbox = document.createElement("i");
             var checked = document.createAttribute("class");
             var trashIcon = document.createElement("i");
@@ -44,9 +46,16 @@ window.addEventListener("load", function () {
             newToDo.appendChild(trashIcon);
             list.appendChild(newToDo);
             checkbox.addEventListener("click", function () { checkToDo(idChecked.value); });
+            trashIcon.addEventListener("click", function () { deleteToDo(idTrash.value); });
         };
         for (var i = 0; i < allToDos.length; i++) {
             _loop_1(i);
+        }
+        if (allToDos.length != 1) {
+            document.querySelector("#numberOfToDos").innerHTML = (allToDos.length).toString() + " tasks";
+        }
+        else {
+            document.querySelector("#numberOfToDos").innerHTML = (allToDos.length).toString() + " task";
         }
         toDoInput.value = "";
     }
@@ -67,6 +76,15 @@ window.addEventListener("load", function () {
                 }
             }
         }
+    }
+    function deleteToDo(id) {
+        for (var i = 0; i < allToDos.length; i++) {
+            var todo = allToDos[i];
+            if (todo.trashId == id) {
+                allToDos.splice(i, 1);
+            }
+        }
+        displayList();
     }
 });
 //# sourceMappingURL=script.js.map
