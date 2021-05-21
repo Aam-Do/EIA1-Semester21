@@ -2,11 +2,9 @@ window.addEventListener("load", function () {
     var toDoInput = document.querySelector("#toDoInput");
     var list = document.querySelector("#toDos");
     var allToDos = [];
-    console.log(allToDos);
     toDoInput.addEventListener("keydown", function (event) {
         if (event.keyCode == 13) {
             allToDos.push({ checked: false, content: toDoInput.value, toDoId: "", checkmarkId: "", trashId: "" });
-            console.log(allToDos);
             displayList();
         }
     });
@@ -67,12 +65,10 @@ window.addEventListener("load", function () {
                 if (todo.checked == false) {
                     check.setAttribute("class", "fas fa-check-circle");
                     todo.checked = true;
-                    console.log("heck");
                 }
                 else {
                     check.setAttribute("class", "far fa-circle");
                     todo.checked = false;
-                    console.log("yeah");
                 }
             }
         }

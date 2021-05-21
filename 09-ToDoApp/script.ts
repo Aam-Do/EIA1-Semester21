@@ -6,21 +6,17 @@ window.addEventListener("load", function (): void {
     interface ToDo { checked: boolean; content: string; toDoId: string; checkmarkId: string; trashId: string; }
     let allToDos: ToDo[] = [];
 
-    console.log(allToDos);
-
     toDoInput.addEventListener("keydown", function (event: KeyboardEvent): void {
         if (event.keyCode == 13) {
-
             allToDos.push({checked: false, content: toDoInput.value, toDoId: "", checkmarkId: "", trashId: ""});
-            console.log(allToDos);
-
             displayList();
-
         }
     });
         
     function displayList(): void {
+
         list.innerHTML = "";
+
         for (let i: number = 0; i < allToDos.length; i++) {
             let todo: ToDo = allToDos[i];
 
@@ -73,6 +69,7 @@ window.addEventListener("load", function (): void {
         else {
             document.querySelector("#numberOfToDos").innerHTML = (allToDos.length).toString() + " task";
         }
+
         toDoInput.value = "";
     }
 
@@ -87,12 +84,10 @@ window.addEventListener("load", function (): void {
                 if (todo.checked == false) {
                     check.setAttribute("class", "fas fa-check-circle");
                     todo.checked = true;
-                    console.log("heck");
                 }
                 else {
                     check.setAttribute("class", "far fa-circle");
                     todo.checked = false;
-                    console.log("yeah");
                 }
             }
         }
