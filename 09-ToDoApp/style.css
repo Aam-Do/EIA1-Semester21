@@ -44,6 +44,7 @@ input {
     top: 45%;
     left: 17px;
     color: #4c5c4c;
+    cursor: pointer;
 }
 li {
     box-shadow: 2px 2px 5px rgba(107, 107, 107, 0.739);
