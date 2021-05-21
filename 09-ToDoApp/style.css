@@ -19,18 +19,31 @@ h3 {
     opacity: 50%;
 }
 #toDos #addToDo, #toDos li, input{
+    position: relative;
     margin: 2px;
-    padding: 20px 20px 20px 20px;
+    padding: 20px 50px 20px 50px;
     background-color: rgb(245, 255, 245);
     border: none;
     width: 500px;
     font-size: 20px;
-    color: rgb(91, 121, 91);
+    color: #5b795b;
+    box-sizing: border-box;
+    word-wrap: break-word;
 }
 input {
     font-size: 18px;
     font-family: 'KoHo', sans-serif;
     margin-bottom: -10px;
+}
+#inputWrapper {
+    position: relative;
+}
+.fa-plus-circle {
+    font-size: 20px;
+    position: absolute;
+    top: 45%;
+    left: 17px;
+    color: #4c5c4c;
 }
 li {
     box-shadow: 2px 2px 5px rgba(107, 107, 107, 0.739);
@@ -41,14 +54,19 @@ ul {
     font-family: 'Bitter', serif;
 }
 .fa-circle, .fa-check-circle {
-    padding: 2px 15px 2px 5px;
-    float: left;
     cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translate(0%, -50%);
 }
 .fa-trash-alt {
-    float: right;
     cursor: pointer;
     visibility: hidden;
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translate(0%, -50%);
 }
 li:hover > .fa-trash-alt {
     visibility: visible;

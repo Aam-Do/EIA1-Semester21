@@ -1,12 +1,17 @@
 window.addEventListener("load", function () {
     var toDoInput = document.querySelector("#toDoInput");
     var list = document.querySelector("#toDos");
+    var add = document.querySelector("#addButton");
     var allToDos = [];
     toDoInput.addEventListener("keydown", function (event) {
         if (event.keyCode == 13) {
             allToDos.push({ checked: false, content: toDoInput.value, toDoId: "", checkmarkId: "", trashId: "" });
             displayList();
         }
+    });
+    add.addEventListener("click", function () {
+        allToDos.push({ checked: false, content: toDoInput.value, toDoId: "", checkmarkId: "", trashId: "" });
+        displayList();
     });
     function displayList() {
         list.innerHTML = "";

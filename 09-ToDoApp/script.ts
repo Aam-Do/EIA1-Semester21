@@ -2,6 +2,7 @@ window.addEventListener("load", function (): void {
 
     const toDoInput: HTMLInputElement = document.querySelector("#toDoInput");
     const list: HTMLUListElement = document.querySelector("#toDos");
+    const add: HTMLElement = document.querySelector("#addButton");
 
     interface ToDo { checked: boolean; content: string; toDoId: string; checkmarkId: string; trashId: string; }
     let allToDos: ToDo[] = [];
@@ -11,6 +12,11 @@ window.addEventListener("load", function (): void {
             allToDos.push({checked: false, content: toDoInput.value, toDoId: "", checkmarkId: "", trashId: ""});
             displayList();
         }
+    });
+
+    add.addEventListener("click", function (): void {
+        allToDos.push({checked: false, content: toDoInput.value, toDoId: "", checkmarkId: "", trashId: ""});
+        displayList();
     });
         
     function displayList(): void {
