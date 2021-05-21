@@ -9,15 +9,16 @@ window.addEventListener("load", function (): void {
 
     toDoInput.addEventListener("keydown", function (event: KeyboardEvent): void {
         if (event.keyCode == 13) {
-            allToDos.push({checked: false, content: toDoInput.value, toDoId: "", checkmarkId: "", trashId: ""});
-            displayList();
+            newToDo();
         }
     });
 
-    add.addEventListener("click", function (): void {
+    add.addEventListener("click", function (): void { newToDo(); });
+
+    function newToDo(): void {
         allToDos.push({checked: false, content: toDoInput.value, toDoId: "", checkmarkId: "", trashId: ""});
         displayList();
-    });
+    }
         
     function displayList(): void {
 

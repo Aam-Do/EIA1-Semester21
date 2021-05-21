@@ -5,14 +5,14 @@ window.addEventListener("load", function () {
     var allToDos = [];
     toDoInput.addEventListener("keydown", function (event) {
         if (event.keyCode == 13) {
-            allToDos.push({ checked: false, content: toDoInput.value, toDoId: "", checkmarkId: "", trashId: "" });
-            displayList();
+            newToDo();
         }
     });
-    add.addEventListener("click", function () {
+    add.addEventListener("click", function () { newToDo(); });
+    function newToDo() {
         allToDos.push({ checked: false, content: toDoInput.value, toDoId: "", checkmarkId: "", trashId: "" });
         displayList();
-    });
+    }
     function displayList() {
         list.innerHTML = "";
         var _loop_1 = function (i) {
@@ -20,7 +20,7 @@ window.addEventListener("load", function () {
             todo.toDoId = i.toString();
             todo.checkmarkId = "check" + i.toString();
             todo.trashId = "trash" + i.toString();
-            var newToDo = document.createElement("li");
+            var newToDo_1 = document.createElement("li");
             var node = document.createTextNode(todo.content);
             var idToDo = document.createAttribute("id");
             var idChecked = document.createAttribute("id");
@@ -43,11 +43,11 @@ window.addEventListener("load", function () {
                 checkbox.setAttributeNode(checked);
             }
             checkbox.setAttributeNode(idChecked);
-            newToDo.appendChild(checkbox);
-            newToDo.appendChild(node);
-            newToDo.setAttributeNode(idToDo);
-            newToDo.appendChild(trashIcon);
-            list.appendChild(newToDo);
+            newToDo_1.appendChild(checkbox);
+            newToDo_1.appendChild(node);
+            newToDo_1.setAttributeNode(idToDo);
+            newToDo_1.appendChild(trashIcon);
+            list.appendChild(newToDo_1);
             checkbox.addEventListener("click", function () { checkToDo(idChecked.value); });
             trashIcon.addEventListener("click", function () { deleteToDo(idTrash.value); });
         };
