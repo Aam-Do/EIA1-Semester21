@@ -17,14 +17,18 @@ let todos: ToDo[] = [ {text: "Lorem", checked: true}, {text: "Ipsum", checked: f
 var inputDOMElement: HTMLInputElement;
 var addButtonDOMElement: HTMLElement;
 var todosDOMElement: HTMLElement;
-var counterDOMElement: HTMLElement;
+var counterTotalDOMElement: HTMLElement;
+var counterOpenDOMElement: HTMLElement;
+var counterDoneDOMElement: HTMLElement;
 
 window.addEventListener("load", function(): void {
 
     inputDOMElement = document.querySelector("#inputTodo");
     addButtonDOMElement = document.querySelector("#addButton");
     todosDOMElement = document.querySelector("#todos");
-    counterDOMElement = document.querySelector("#counter");
+    counterTotalDOMElement = document.querySelector("#counterTotal");
+    counterOpenDOMElement = document.querySelector("#counterOpen");
+    counterDoneDOMElement = document.querySelector("#counterDone");
 
     addButtonDOMElement.addEventListener("click", addTodo);
 
@@ -74,11 +78,19 @@ function drawListToDOM(): void {
         todosDOMElement.appendChild(todo);
     }
 
-    updateCounter();
+    updateCounters();
 }
 
-function updateCounter(): void {
-    counterDOMElement.innerHTML = todos.length + " in total";
+function updateCounters(): void {
+    counterTotalDOMElement.innerHTML = todos.length + " in total";
+    let openCount: number = 0;
+    for ( let i: number = 0; i < todos.length; i++ ) {
+        if ( todos[i].checked == false ) {
+            openCount++;
+        }
+    }
+    counterOpenDOMElement.innerHTML = openCount + " open";
+    counterDoneDOMElement.innerHTML = todos.length - openCount + " done";
 }
 
 /**

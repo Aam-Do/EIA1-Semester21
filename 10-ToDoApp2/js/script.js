@@ -2,12 +2,16 @@ var todos = [{ text: "Lorem", checked: true }, { text: "Ipsum", checked: false }
 var inputDOMElement;
 var addButtonDOMElement;
 var todosDOMElement;
-var counterDOMElement;
+var counterTotalDOMElement;
+var counterOpenDOMElement;
+var counterDoneDOMElement;
 window.addEventListener("load", function () {
     inputDOMElement = document.querySelector("#inputTodo");
     addButtonDOMElement = document.querySelector("#addButton");
     todosDOMElement = document.querySelector("#todos");
-    counterDOMElement = document.querySelector("#counter");
+    counterTotalDOMElement = document.querySelector("#counterTotal");
+    counterOpenDOMElement = document.querySelector("#counterOpen");
+    counterDoneDOMElement = document.querySelector("#counterDone");
     addButtonDOMElement.addEventListener("click", addTodo);
     drawListToDOM();
 });
@@ -51,10 +55,18 @@ function drawListToDOM() {
     for (var index = 0; index < todos.length; index++) {
         _loop_1(index);
     }
-    updateCounter();
+    updateCounters();
 }
-function updateCounter() {
-    counterDOMElement.innerHTML = todos.length + " in total";
+function updateCounters() {
+    counterTotalDOMElement.innerHTML = todos.length + " in total";
+    var openCount = 0;
+    for (var i = 0; i < todos.length; i++) {
+        if (todos[i].checked == false) {
+            openCount++;
+        }
+    }
+    counterOpenDOMElement.innerHTML = openCount + " open";
+    counterDoneDOMElement.innerHTML = todos.length - openCount + " done";
 }
 /**
  * Ein neues ToDo wird folgendermaßen erstellt:
