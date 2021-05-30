@@ -65,14 +65,14 @@ function drawListToDOM() {
     updateCounters();
 }
 function updateCounters() {
-    counterTotalDOMElement.innerHTML = todos.length + " in total";
+    counterTotalDOMElement.innerHTML = todos.length + " in total |";
     var openCount = 0;
     for (var i = 0; i < todos.length; i++) {
         if (todos[i].checked == false) {
             openCount++;
         }
     }
-    counterOpenDOMElement.innerHTML = openCount + " open";
+    counterOpenDOMElement.innerHTML = openCount + " open |";
     counterDoneDOMElement.innerHTML = todos.length - openCount + " done";
 }
 /**

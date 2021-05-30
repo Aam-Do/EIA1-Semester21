@@ -92,14 +92,14 @@ function drawListToDOM(): void {
 }
 
 function updateCounters(): void {
-    counterTotalDOMElement.innerHTML = todos.length + " in total";
+    counterTotalDOMElement.innerHTML = todos.length + " in total |";
     let openCount: number = 0;
     for ( let i: number = 0; i < todos.length; i++ ) {
         if ( todos[i].checked == false ) {
             openCount++;
         }
     }
-    counterOpenDOMElement.innerHTML = openCount + " open";
+    counterOpenDOMElement.innerHTML = openCount + " open |";
     counterDoneDOMElement.innerHTML = todos.length - openCount + " done";
 }
 

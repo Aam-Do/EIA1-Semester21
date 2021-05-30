@@ -85,3 +85,15 @@ main {
 .trash:hover {
     color: black;
 }
+#counters {
+    color: gray;
+    margin-bottom: 20px;
+}
+p {
+    color: gray;
+    display: inline;
+}
+#Artyom {
+    padding: 10px;
+    margin-bottom: 20px;
+}
