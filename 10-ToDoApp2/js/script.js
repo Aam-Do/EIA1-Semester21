@@ -5,6 +5,8 @@ var todosDOMElement;
 var counterTotalDOMElement;
 var counterOpenDOMElement;
 var counterDoneDOMElement;
+var mic;
+var artyom = new Artyom();
 window.addEventListener("load", function () {
     inputDOMElement = document.querySelector("#inputTodo");
     addButtonDOMElement = document.querySelector("#addButton");
@@ -12,7 +14,12 @@ window.addEventListener("load", function () {
     counterTotalDOMElement = document.querySelector("#counterTotal");
     counterOpenDOMElement = document.querySelector("#counterOpen");
     counterDoneDOMElement = document.querySelector("#counterDone");
+    mic = document.querySelector("#mic");
     addButtonDOMElement.addEventListener("click", addTodo);
+    document.querySelector("#Artyom").addEventListener("click", function () {
+        mic.setAttribute("class", "fas fa-microphone");
+        startOneCommandArtyom();
+    });
     drawListToDOM();
 });
 function drawListToDOM() {
@@ -135,5 +142,30 @@ function deleteTodo(index) {
      * wird wieder getriggert
      */
     drawListToDOM();
+}
+// Artyom
+artyom.addCommands({
+    indexes: ["erstelle Aufgabe *"],
+    smart: true,
+    action: function (i, wildcard) {
+        console.log("Neue Aufgabe wird erstellt: " + wildcard);
+        todos.unshift({ text: wildcard, checked: false });
+        mic.setAttribute("class", "fas fa-microphone-slash");
+        drawListToDOM();
+    }
+});
+function startOneCommandArtyom() {
+    artyom.fatality();
+    setTimeout(function () {
+        artyom.initialize({
+            lang: "de-DE",
+            continuous: false,
+            listen: true,
+            interimResults: true,
+            debug: true
+        }).then(function () {
+            console.log("Ready!");
+        });
+    }, 250);
 }
 //# sourceMappingURL=script.js.map

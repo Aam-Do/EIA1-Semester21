@@ -20,6 +20,10 @@ var todosDOMElement: HTMLElement;
 var counterTotalDOMElement: HTMLElement;
 var counterOpenDOMElement: HTMLElement;
 var counterDoneDOMElement: HTMLElement;
+let mic: HTMLElement;
+        
+declare var Artyom: any;
+const artyom: any = new Artyom();
 
 window.addEventListener("load", function(): void {
 
@@ -29,8 +33,14 @@ window.addEventListener("load", function(): void {
     counterTotalDOMElement = document.querySelector("#counterTotal");
     counterOpenDOMElement = document.querySelector("#counterOpen");
     counterDoneDOMElement = document.querySelector("#counterDone");
+    mic = document.querySelector("#mic");
 
     addButtonDOMElement.addEventListener("click", addTodo);
+    
+    document.querySelector("#Artyom").addEventListener("click", function (): void {
+        mic.setAttribute("class", "fas fa-microphone");
+        startOneCommandArtyom();
+    });
 
     drawListToDOM();
 });
@@ -167,4 +177,39 @@ function deleteTodo(index: number): void {
      * wird wieder getriggert
      */
     drawListToDOM();
+
+
 }
+
+
+// Artyom
+
+artyom.addCommands({
+    indexes: ["erstelle Aufgabe *"],
+    smart: true,
+    action: function(i: any, wildcard: string): void {
+        console.log("Neue Aufgabe wird erstellt: " + wildcard);
+        todos.unshift({text: wildcard, checked: false});
+        mic.setAttribute("class", "fas fa-microphone-slash");
+        drawListToDOM();
+    }
+});
+
+function startOneCommandArtyom(): void {
+    artyom.fatality();
+
+    setTimeout(
+        function(): void {
+            artyom.initialize({
+                lang: "de-DE",
+                continuous: false,
+                listen: true,
+                interimResults: true,
+                debug: true
+            }).then(function(): void {
+                console.log("Ready!");
+            });
+        }, 
+        250);
+}
+    
