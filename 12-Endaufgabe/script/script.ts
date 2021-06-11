@@ -1,23 +1,23 @@
 interface TicTacToe { free: boolean; x: boolean; o: boolean; }
 interface Difficulty { value: number; name: string; }
-let alltictactoes: TicTacToe[][] = [[{free: true, x: false, o: false}, {free: false, x: true, o: false}], [{free: true, x: false, o: false}, {free: false, x: false, o: true}]];
+let allTicTacToes: TicTacToe[][] = [[{free: true, x: false, o: false}, {free: false, x: true, o: false}], [{free: true, x: false, o: false}, {free: false, x: false, o: true}]];
 let allDifficulties: Difficulty[] = [{value: 3, name: "Standard"}, {value: 4, name: "Advanced"}, {value: 5, name: "Expert"}];
 let player1Turn: boolean = false;
 let player1Score: number = 0;
 let player2Score: number = 0;
 let round: number = 0;
-let infofield: HTMLElement;
-let playfield: HTMLElement;
+let infoField: HTMLElement;
+let playField: HTMLElement;
 
 window.addEventListener("load", function(): void {
-    infofield = document.querySelector("#start/end");
-    playfield = document.querySelector("#field");
+    infoField = document.querySelector("#info");
+    playField = document.querySelector("#field");
     drawStartScreen();
 });
 
 function drawStartScreen(): void {
-    infofield.innerHTML = "";
-    playfield.innerHTML = "";
+    infoField.innerHTML = "<p> Welcome to Tic-Tac-Toe! Select a difficulty level: </p>";
+    playField.innerHTML = "";
 
     for (let i: number = 0; i < allDifficulties.length; i++) {
         let difficulty: Difficulty = allDifficulties[i];
@@ -26,12 +26,53 @@ function drawStartScreen(): void {
         let node: Node = document.createTextNode(difficulty.name);
         let idDifficultyButton: Attr = document.createAttribute("id");
 
-        idDifficultyButton.value = i.toString();
+        idDifficultyButton.value = (allDifficulties[i].value).toString();
       
         newDifficultyButton.appendChild(node);
         newDifficultyButton.setAttributeNode(idDifficultyButton);
 
-        infofield.appendChild(newDifficultyButton);
+        infoField.appendChild(newDifficultyButton);
         
+        newDifficultyButton.addEventListener("click", function (): void {setDifficulty(allDifficulties[i].value); });
+    }
+}
+
+function setDifficulty(difficulty: number): void {
+    allTicTacToes.length = 0;
+    for ( let x: number = 0; x < difficulty; x++) {
+        allTicTacToes[x] = [];
+        for (let y: number = 0; y < difficulty; y++) {
+            allTicTacToes[x][y] = {free: true, x: false, o: false};
+            console.log(allTicTacToes);
+        }
+    }
+    drawField();
+}
+
+function drawField(): void {
+    console.log("drawField");
+    playField.innerHTML = "";
+    infoField.innerHTML = "";
+    for ( let x: number = 0; x < allTicTacToes.length; x++) {
+        for (let y: number = 0; y < allTicTacToes.length; y++) {
+            let ticTacToe: TicTacToe = allTicTacToes[x][y];
+
+            let newTicTacToe: HTMLDivElement = document.createElement("div");
+            let idTicTacToe: Attr = document.createAttribute("id");
+
+            idTicTacToe.value = x.toString() +  y.toString();
+
+            if (ticTacToe.free == false) {
+                if (ticTacToe.x == true) {
+            // make icon when it's there lol
+                }
+            }
+            
+            newTicTacToe.setAttributeNode(idTicTacToe);
+
+            playField.appendChild(newTicTacToe);
+            
+            // newTicTacToe.addEventListener("click", function (): void {clickHandler(idTicTacToe.value); });
+        }
     }
 }
