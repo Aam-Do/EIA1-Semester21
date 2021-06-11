@@ -50,7 +50,6 @@ function setDifficulty(difficulty: number): void {
 }
 
 function drawField(): void {
-    console.log("drawField");
     playField.innerHTML = "";
     infoField.innerHTML = "";
     for ( let x: number = 0; x < allTicTacToes.length; x++) {
@@ -59,20 +58,71 @@ function drawField(): void {
 
             let newTicTacToe: HTMLDivElement = document.createElement("div");
             let idTicTacToe: Attr = document.createAttribute("id");
+            let symbolIcon: HTMLElement = document.createElement("i");
+            let symbolAtrr: Attr = document.createAttribute("class");
 
             idTicTacToe.value = x.toString() +  y.toString();
 
             if (ticTacToe.free == false) {
                 if (ticTacToe.x == true) {
-            // make icon when it's there lol
+                    symbolAtrr.value = "fas fa-times";
+                    console.log("X set");
                 }
+                else {
+                    symbolAtrr.value = "far fa-circle";
+                    console.log("O set");
+                }
+                symbolIcon.setAttributeNode(symbolAtrr);
+                newTicTacToe.appendChild(symbolIcon);
+            }
+            else {
+                newTicTacToe.addEventListener("click", function (): void {clickHandler(idTicTacToe.value); });
             }
             
             newTicTacToe.setAttributeNode(idTicTacToe);
 
             playField.appendChild(newTicTacToe);
-            
-            // newTicTacToe.addEventListener("click", function (): void {clickHandler(idTicTacToe.value); });
         }
     }
 }
+
+function clickHandler(xy: string): void {
+    let symbol: string = "X";
+    for (let x: number = 0; x < allTicTacToes.length; x++) {
+        for (let y: number = 0; y < allTicTacToes.length; y++) {
+            let ticTacToe: TicTacToe = allTicTacToes[x][y];
+            if (x.toString() +  y.toString() == xy) {
+                if (player1Turn == false) {
+                    ticTacToe.x = true;
+                }
+                else {
+                    ticTacToe.o = true;
+                    symbol = "O";
+                }
+                ticTacToe.free = false;
+            }
+        }
+    }
+    player1Turn = !player1Turn;
+    drawField();
+    // let win: boolean = checkRoundEnd(symbol);
+    // if (win == true) {
+    //     endRestartRound();
+    // }
+}
+// function checkRoundEnd(symbol: string): boolean {
+//     if (symbol == "X") {
+        
+//     }
+//     for (let x: number = 0; x < allTicTacToes.length; x++) {
+//         let win: boolean = true;
+//         for (let y: number = 0; y < allTicTacToes.length; y++) {
+//             let ticTacToe: TicTacToe = allTicTacToes[x][y];
+
+//             if (ticTacToe.)
+//         }
+//         if (win == true) {
+//             return(win);
+//         }
+//     }
+// }

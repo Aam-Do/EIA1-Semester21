@@ -41,24 +41,75 @@ function setDifficulty(difficulty) {
     drawField();
 }
 function drawField() {
-    console.log("drawField");
     playField.innerHTML = "";
     infoField.innerHTML = "";
     for (var x = 0; x < allTicTacToes.length; x++) {
-        for (var y = 0; y < allTicTacToes.length; y++) {
+        var _loop_2 = function (y) {
             var ticTacToe = allTicTacToes[x][y];
             var newTicTacToe = document.createElement("div");
             var idTicTacToe = document.createAttribute("id");
+            var symbolIcon = document.createElement("i");
+            var symbolAtrr = document.createAttribute("class");
             idTicTacToe.value = x.toString() + y.toString();
             if (ticTacToe.free == false) {
                 if (ticTacToe.x == true) {
-                    // make icon when it's there lol
+                    symbolAtrr.value = "fas fa-times";
+                    console.log("X set");
                 }
+                else {
+                    symbolAtrr.value = "far fa-circle";
+                    console.log("O set");
+                }
+                symbolIcon.setAttributeNode(symbolAtrr);
+                newTicTacToe.appendChild(symbolIcon);
+            }
+            else {
+                newTicTacToe.addEventListener("click", function () { clickHandler(idTicTacToe.value); });
             }
             newTicTacToe.setAttributeNode(idTicTacToe);
             playField.appendChild(newTicTacToe);
-            // newTicTacToe.addEventListener("click", function (): void {clickHandler(idTicTacToe.value); });
+        };
+        for (var y = 0; y < allTicTacToes.length; y++) {
+            _loop_2(y);
         }
     }
 }
+function clickHandler(xy) {
+    var symbol = "X";
+    for (var x = 0; x < allTicTacToes.length; x++) {
+        for (var y = 0; y < allTicTacToes.length; y++) {
+            var ticTacToe = allTicTacToes[x][y];
+            if (x.toString() + y.toString() == xy) {
+                if (player1Turn == false) {
+                    ticTacToe.x = true;
+                }
+                else {
+                    ticTacToe.o = true;
+                    symbol = "O";
+                }
+                ticTacToe.free = false;
+            }
+        }
+    }
+    player1Turn = !player1Turn;
+    drawField();
+    // let win: boolean = checkRoundEnd(symbol);
+    // if (win == true) {
+    //     endRestartRound();
+    // }
+}
+// function checkRoundEnd(symbol: string): boolean {
+//     if (symbol == "X") {
+//     }
+//     for (let x: number = 0; x < allTicTacToes.length; x++) {
+//         let win: boolean = true;
+//         for (let y: number = 0; y < allTicTacToes.length; y++) {
+//             let ticTacToe: TicTacToe = allTicTacToes[x][y];
+//             if (ticTacToe.)
+//         }
+//         if (win == true) {
+//             return(win);
+//         }
+//     }
+// }
 //# sourceMappingURL=script.js.map
