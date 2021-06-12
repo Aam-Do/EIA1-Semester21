@@ -1,4 +1,4 @@
-var allTicTacToes = [[{ free: true, x: false, o: false }, { free: false, x: true, o: false }], [{ free: true, x: false, o: false }, { free: false, x: false, o: true }]];
+var allTicTacToes = [];
 var allDifficulties = [{ value: 3, name: "Standard" }, { value: 4, name: "Advanced" }, { value: 5, name: "Expert" }];
 var player1Turn = false;
 var player1Score = 0;
@@ -34,7 +34,7 @@ function setDifficulty(difficulty) {
     for (var x = 0; x < difficulty; x++) {
         allTicTacToes[x] = [];
         for (var y = 0; y < difficulty; y++) {
-            allTicTacToes[x][y] = { free: true, x: false, o: false };
+            allTicTacToes[x][y] = { free: true, x: false };
             console.log(allTicTacToes);
         }
     }
@@ -75,7 +75,6 @@ function drawField() {
     }
 }
 function clickHandler(xy) {
-    var symbol = "X";
     for (var x = 0; x < allTicTacToes.length; x++) {
         for (var y = 0; y < allTicTacToes.length; y++) {
             var ticTacToe = allTicTacToes[x][y];
@@ -83,33 +82,88 @@ function clickHandler(xy) {
                 if (player1Turn == false) {
                     ticTacToe.x = true;
                 }
-                else {
-                    ticTacToe.o = true;
-                    symbol = "O";
-                }
                 ticTacToe.free = false;
             }
         }
     }
     player1Turn = !player1Turn;
     drawField();
-    // let win: boolean = checkRoundEnd(symbol);
-    // if (win == true) {
-    //     endRestartRound();
+    var roundWon = checkRoundEnd();
+    if (roundWon == true) {
+        endRestartRound();
+    }
+}
+function checkRoundEnd() {
+    for (var x = 0; x < allTicTacToes.length; x++) {
+        var win = false;
+        var correctSymbols = 0;
+        for (var y = 0; y < allTicTacToes.length; y++) {
+            var ticTacToe = allTicTacToes[x][y];
+            if (ticTacToe.free == false) {
+                if (ticTacToe.x == true) {
+                    correctSymbols += 1;
+                }
+            }
+            else {
+                correctSymbols = NaN;
+            }
+        }
+        if (correctSymbols == 0 || correctSymbols == allTicTacToes.length) {
+            win = true;
+        }
+        if (win == true) {
+            return (win);
+        }
+    }
+    for (var y = 0; y < allTicTacToes.length; y++) {
+        var win = false;
+        var correctSymbols = 0;
+        for (var x = 0; x < allTicTacToes.length; x++) {
+            var ticTacToe = allTicTacToes[x][y];
+            if (ticTacToe.free == false) {
+                if (ticTacToe.x == true) {
+                    correctSymbols += 1;
+                }
+            }
+            else {
+                correctSymbols = NaN;
+            }
+        }
+        if (correctSymbols == 0 || correctSymbols == allTicTacToes.length) {
+            win = true;
+        }
+        if (win == true) {
+            return (win);
+        }
+    }
+    // for (let x: number = 0; x < allTicTacToes.length; x++) {
+    //     let win: boolean = false;
+    //     let correctSymbols: number = 0;
+    //     for (let y: number = allTicTacToes.length; y > 0; y--) {
+    //         let ticTacToe: TicTacToe = allTicTacToes[x][y - 1];
+    //         if (ticTacToe.free == false) {
+    //             if (ticTacToe.x == true) {
+    //                 correctSymbols += 1;
+    //                 console.log(ticTacToe);
+    //             }
+    //             else {
+    //                 console.log(ticTacToe);
+    //             }
+    //         }
+    //         else {
+    //             correctSymbols = NaN;
+    //         }
+    //     }
+    //     console.log(correctSymbols);
+    //     if (correctSymbols == 0 || correctSymbols == allTicTacToes.length) {
+    //         win = true;
+    //     }
+    //     if (win == true) {
+    //         return(win);
+    //     }
     // }
 }
-// function checkRoundEnd(symbol: string): boolean {
-//     if (symbol == "X") {
-//     }
-//     for (let x: number = 0; x < allTicTacToes.length; x++) {
-//         let win: boolean = true;
-//         for (let y: number = 0; y < allTicTacToes.length; y++) {
-//             let ticTacToe: TicTacToe = allTicTacToes[x][y];
-//             if (ticTacToe.)
-//         }
-//         if (win == true) {
-//             return(win);
-//         }
-//     }
-// }
+function endRestartRound() {
+    console.log("someone won");
+}
 //# sourceMappingURL=script.js.map

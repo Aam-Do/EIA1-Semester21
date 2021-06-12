@@ -1,6 +1,9 @@
 div {
     background-color: red;
 }
+#field {
+    width: 260px;
+}
 #field div {
     background-color: blueviolet;
     width: 73px; height: 73px;
