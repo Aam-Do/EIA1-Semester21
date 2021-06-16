@@ -170,33 +170,33 @@ function checkRoundEnd(): string {
         if (win == true) {
             return("win");
         }
-    //     win = false;
-    //     correctSymbols = 0;
-    //     for (let y: number = allTicTacToes.length - 1; y > 0; y--) {
-    //         let ticTacToe: TicTacToe = allTicTacToes[x][y];
-    //         if (ticTacToe.state != "free") {
-    //             if (ticTacToe.state == "X") {
-    //                 correctSymbols++;
-    //                 console.log(ticTacToe);
-    //             }
-    //             else {
-    //                 console.log(ticTacToe);
-    //             }
-    //         }
-    //         else {
-    //             correctSymbols = NaN;
-    //         }
-    //     }
-    //     if (correctSymbols == 0 || correctSymbols == allTicTacToes.length) {
-    //         win = true;
-    //     }
-    //     if (win == true) {
-    //         return("win");
-    //     }
     }
     if (freeCount == 0) {
         return("draw");
     }
+    // let win: boolean = false;
+    // let correctSymbols: number = 0;
+    // for (let y: number = allTicTacToes.length - 1; y > 0; y--) {
+    //     let ticTacToe: TicTacToe = allTicTacToes[x][y];
+    //     if (ticTacToe.state != "free") {
+    //         if (ticTacToe.state == "X") {
+    //             correctSymbols++;
+    //             console.log(ticTacToe);
+    //         }
+    //         else {
+    //             console.log(ticTacToe);
+    //         }
+    //     }
+    //     else {
+    //         correctSymbols = NaN;
+    //     }
+    // }
+    // if (correctSymbols == 0 || correctSymbols == allTicTacToes.length) {
+    //     win = true;
+    // }
+    // if (win == true) {
+    //     return("win");
+    // }
 }
 
 function endRestartRound(roundEnd: string): void {
