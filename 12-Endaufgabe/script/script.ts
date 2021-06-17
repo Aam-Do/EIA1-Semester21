@@ -83,7 +83,6 @@ function drawField(): void {
             }
             
             newTicTacToe.setAttributeNode(idTicTacToe);
-
             playField.appendChild(newTicTacToe);
         }
     }
@@ -101,6 +100,24 @@ function drawField(): void {
     infoField.appendChild(player1ScoreElement);
     infoField.appendChild(player2ScoreElement);
     infoField.appendChild(roundCounterElement);
+    
+    if (player1Turn == true) {
+        comTurn();
+    }
+}
+
+function comTurn(): void {
+    setTimeout(function (): void {
+        while (player1Turn == true) {
+            var random1: number = Math.floor(Math.random() * allTicTacToes.length);
+            var random2: number = Math.floor(Math.random() * allTicTacToes.length);
+            let randomTicTacToe: TicTacToe = allTicTacToes[random1][random2];
+            if (randomTicTacToe.state == "free") {
+                break;
+            }
+        }
+        clickHandler(random1.toString() + random2.toString());
+    },         200);
 }
 
 function clickHandler(xy: string): void {
@@ -118,13 +135,15 @@ function clickHandler(xy: string): void {
         }
     }
     player1Turn = !player1Turn;
-    drawField();
     let roundEnd: string = checkRoundEnd();
     if (roundEnd == "win") {
         endRestartRound(roundEnd);
     }
     else if (roundEnd == "draw") {
         endRestartRound(roundEnd);
+    }
+    else {
+        drawField();
     }
 }
 
@@ -174,29 +193,44 @@ function checkRoundEnd(): string {
     if (freeCount == 0) {
         return("draw");
     }
-    // let win: boolean = false;
-    // let correctSymbols: number = 0;
-    // for (let y: number = allTicTacToes.length - 1; y > 0; y--) {
-    //     let ticTacToe: TicTacToe = allTicTacToes[x][y];
-    //     if (ticTacToe.state != "free") {
-    //         if (ticTacToe.state == "X") {
-    //             correctSymbols++;
-    //             console.log(ticTacToe);
-    //         }
-    //         else {
-    //             console.log(ticTacToe);
-    //         }
-    //     }
-    //     else {
-    //         correctSymbols = NaN;
-    //     }
-    // }
-    // if (correctSymbols == 0 || correctSymbols == allTicTacToes.length) {
-    //     win = true;
-    // }
-    // if (win == true) {
-    //     return("win");
-    // }
+    let win: boolean = false;
+    let correctSymbols: number = 0;
+    for (let x: number = 0; x < allTicTacToes.length; x++) {
+        let ticTacToe: TicTacToe = allTicTacToes[x][x];
+        if (ticTacToe.state != "free") {
+            if (ticTacToe.state == "X") {
+                correctSymbols++;
+            }
+        }
+        else {
+            correctSymbols = NaN;
+        }
+    }
+    if (correctSymbols == 0 || correctSymbols == allTicTacToes.length) {
+        win = true;
+    }
+    if (win == true) {
+        return("win");
+    }
+    win = false;
+    correctSymbols = 0;
+    for (let x: number = 0; x < allTicTacToes.length; x++) {
+        let ticTacToe: TicTacToe = allTicTacToes[x][allTicTacToes.length - 1 - x];
+        if (ticTacToe.state != "free") {
+            if (ticTacToe.state == "X") {
+                correctSymbols++;
+            }
+        }
+        else {
+            correctSymbols = NaN;
+        }
+    }
+    if (correctSymbols == 0 || correctSymbols == allTicTacToes.length) {
+        win = true;
+    }
+    if (win == true) {
+        return("win");
+    }
 }
 
 function endRestartRound(roundEnd: string): void {
@@ -233,10 +267,26 @@ function gameOver(difficultyIndex: number): void {
     playField.innerHTML = "";
     infoField.innerHTML = "";
 
+    let winner: string;
+    if (player1Score > player2Score) {
+        winner = " Player 1 won!";
+    }
+    else if (player2Score > player1Score) {
+        winner = "Player 2 won!";
+    }
+    else {
+        winner = "It's a draw!";
+    }
+
+    let winnerAnnouncement: HTMLSpanElement = document.createElement("span");
+    let announcementNode: Node = document.createTextNode(winner);
     let restartButton: HTMLButtonElement = document.createElement("button");
     let startScreenButton: HTMLButtonElement = document.createElement("button");
     let restartNode: Node = document.createTextNode("Restart");
     let startScreenNode: Node = document.createTextNode("Back to Start Screen");
+
+    winnerAnnouncement.appendChild(announcementNode);
+    infoField.appendChild(winnerAnnouncement);
     restartButton.appendChild(restartNode);
     startScreenButton.appendChild(startScreenNode);
     infoField.appendChild(restartButton);

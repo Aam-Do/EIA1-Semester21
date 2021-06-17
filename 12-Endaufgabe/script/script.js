@@ -88,6 +88,22 @@ function drawField() {
     infoField.appendChild(player1ScoreElement);
     infoField.appendChild(player2ScoreElement);
     infoField.appendChild(roundCounterElement);
+    if (player1Turn == true) {
+        comTurn();
+    }
+}
+function comTurn() {
+    setTimeout(function () {
+        while (player1Turn == true) {
+            var random1 = Math.floor(Math.random() * allTicTacToes.length);
+            var random2 = Math.floor(Math.random() * allTicTacToes.length);
+            var randomTicTacToe = allTicTacToes[random1][random2];
+            if (randomTicTacToe.state == "free") {
+                break;
+            }
+        }
+        clickHandler(random1.toString() + random2.toString());
+    }, 200);
 }
 function clickHandler(xy) {
     for (var x = 0; x < allTicTacToes.length; x++) {
@@ -104,7 +120,6 @@ function clickHandler(xy) {
         }
     }
     player1Turn = !player1Turn;
-    drawField();
     var roundEnd = checkRoundEnd();
     if (roundEnd == "win") {
         endRestartRound(roundEnd);
@@ -112,76 +127,94 @@ function clickHandler(xy) {
     else if (roundEnd == "draw") {
         endRestartRound(roundEnd);
     }
+    else {
+        drawField();
+    }
 }
 function checkRoundEnd() {
     var freeCount = 0;
     for (var x = 0; x < allTicTacToes.length; x++) {
-        var win = false;
-        var correctSymbols = 0;
+        var win_1 = false;
+        var correctSymbols_1 = 0;
         for (var y = 0; y < allTicTacToes.length; y++) {
             var ticTacToe = allTicTacToes[x][y];
             if (ticTacToe.state != "free") {
                 if (ticTacToe.state == "X") {
-                    correctSymbols++;
+                    correctSymbols_1++;
                 }
             }
             else {
                 freeCount++;
-                correctSymbols = NaN;
+                correctSymbols_1 = NaN;
             }
         }
-        if (correctSymbols == 0 || correctSymbols == allTicTacToes.length) {
-            win = true;
+        if (correctSymbols_1 == 0 || correctSymbols_1 == allTicTacToes.length) {
+            win_1 = true;
         }
-        if (win == true) {
+        if (win_1 == true) {
             return ("win");
         }
-        win = false;
-        correctSymbols = 0;
+        win_1 = false;
+        correctSymbols_1 = 0;
         for (var y = 0; y < allTicTacToes.length; y++) {
             var ticTacToe = allTicTacToes[y][x];
             if (ticTacToe.state != "free") {
                 if (ticTacToe.state == "X") {
-                    correctSymbols++;
+                    correctSymbols_1++;
                 }
             }
             else {
-                correctSymbols = NaN;
+                correctSymbols_1 = NaN;
             }
         }
-        if (correctSymbols == 0 || correctSymbols == allTicTacToes.length) {
-            win = true;
+        if (correctSymbols_1 == 0 || correctSymbols_1 == allTicTacToes.length) {
+            win_1 = true;
         }
-        if (win == true) {
+        if (win_1 == true) {
             return ("win");
         }
     }
     if (freeCount == 0) {
         return ("draw");
     }
-    // let win: boolean = false;
-    // let correctSymbols: number = 0;
-    // for (let y: number = allTicTacToes.length - 1; y > 0; y--) {
-    //     let ticTacToe: TicTacToe = allTicTacToes[x][y];
-    //     if (ticTacToe.state != "free") {
-    //         if (ticTacToe.state == "X") {
-    //             correctSymbols++;
-    //             console.log(ticTacToe);
-    //         }
-    //         else {
-    //             console.log(ticTacToe);
-    //         }
-    //     }
-    //     else {
-    //         correctSymbols = NaN;
-    //     }
-    // }
-    // if (correctSymbols == 0 || correctSymbols == allTicTacToes.length) {
-    //     win = true;
-    // }
-    // if (win == true) {
-    //     return("win");
-    // }
+    var win = false;
+    var correctSymbols = 0;
+    for (var x = 0; x < allTicTacToes.length; x++) {
+        var ticTacToe = allTicTacToes[x][x];
+        if (ticTacToe.state != "free") {
+            if (ticTacToe.state == "X") {
+                correctSymbols++;
+            }
+        }
+        else {
+            correctSymbols = NaN;
+        }
+    }
+    if (correctSymbols == 0 || correctSymbols == allTicTacToes.length) {
+        win = true;
+    }
+    if (win == true) {
+        return ("win");
+    }
+    win = false;
+    correctSymbols = 0;
+    for (var x = 0; x < allTicTacToes.length; x++) {
+        var ticTacToe = allTicTacToes[x][allTicTacToes.length - 1 - x];
+        if (ticTacToe.state != "free") {
+            if (ticTacToe.state == "X") {
+                correctSymbols++;
+            }
+        }
+        else {
+            correctSymbols = NaN;
+        }
+    }
+    if (correctSymbols == 0 || correctSymbols == allTicTacToes.length) {
+        win = true;
+    }
+    if (win == true) {
+        return ("win");
+    }
 }
 function endRestartRound(roundEnd) {
     console.log("round ended");
@@ -215,10 +248,24 @@ function endRestartRound(roundEnd) {
 function gameOver(difficultyIndex) {
     playField.innerHTML = "";
     infoField.innerHTML = "";
+    var winner;
+    if (player1Score > player2Score) {
+        winner = " Player 1 won!";
+    }
+    else if (player2Score > player1Score) {
+        winner = "Player 2 won!";
+    }
+    else {
+        winner = "It's a draw!";
+    }
+    var winnerAnnouncement = document.createElement("span");
+    var announcementNode = document.createTextNode(winner);
     var restartButton = document.createElement("button");
     var startScreenButton = document.createElement("button");
     var restartNode = document.createTextNode("Restart");
     var startScreenNode = document.createTextNode("Back to Start Screen");
+    winnerAnnouncement.appendChild(announcementNode);
+    infoField.appendChild(winnerAnnouncement);
     restartButton.appendChild(restartNode);
     startScreenButton.appendChild(startScreenNode);
     infoField.appendChild(restartButton);
