@@ -8,6 +8,7 @@ let player2Score: number = 0;
 let round: number = 0;
 let infoField: HTMLElement;
 let playField: HTMLElement;
+let comGame: boolean = false;
 
 window.addEventListener("load", function(): void {
     infoField = document.querySelector("#info");
@@ -16,7 +17,27 @@ window.addEventListener("load", function(): void {
 });
 
 function drawStartScreen(): void {
-    infoField.innerHTML = "<p> Welcome to Tic-Tac-Toe! Select a difficulty level: </p>";
+    infoField.innerHTML = "<h2> Welcome to Tic-Tac-Toe! </h2> <p> Select a game mode: </p>";
+    playField.innerHTML = "";
+    playField.style.visibility = "hidden";
+    comGame = false;
+
+    let pvcButton: HTMLButtonElement = document.createElement("button");
+    let pvpButton: HTMLButtonElement = document.createElement("button");
+    let pvcNode: Node = document.createTextNode("Player vs COM");
+    let pvpNode: Node = document.createTextNode("Player vs Player");
+
+    pvcButton.appendChild(pvcNode);
+    pvpButton.appendChild(pvpNode);
+    infoField.appendChild(pvcButton);
+    infoField.appendChild(pvpButton);
+    
+    pvcButton.addEventListener("click", function (): void { comGame = true; drawDifficultyScreen(); });
+    pvpButton.addEventListener("click", function (): void { drawDifficultyScreen(); });
+}
+
+function drawDifficultyScreen(): void {
+    infoField.innerHTML = "<h2> Welcome to Tic-Tac-Toe! </h2> <p> Select a difficulty level: </p>";
     playField.innerHTML = "";
 
     for (let i: number = 0; i < allDifficulties.length; i++) {
@@ -47,14 +68,16 @@ function setDifficulty(difficulty: number, difficultyId: number): void {
             console.log(allTicTacToes);
         }
     }
-    let cssWidth: string = 231 + 77 * difficultyId + "px";
-    playField.style.width = cssWidth;
+    let cssWidthHeight: string = 228 + 76 * difficultyId + "px";
+    playField.style.width = cssWidthHeight;
+    playField.style.height = cssWidthHeight;
     drawField();
 }
 
 function drawField(): void {
     playField.innerHTML = "";
     infoField.innerHTML = "";
+    playField.style.visibility = "visible";
     for ( let x: number = 0; x < allTicTacToes.length; x++) {
         for (let y: number = 0; y < allTicTacToes.length; y++) {
             let ticTacToe: TicTacToe = allTicTacToes[x][y];
@@ -90,6 +113,10 @@ function drawField(): void {
     let player1ScoreNode: Node = document.createTextNode("Player 1 Score: " + player1Score);
     let player2ScoreElement: HTMLSpanElement = document.createElement("span");
     let player2ScoreNode: Node = document.createTextNode(" | Player 2 Score: " + player2Score);
+    if (comGame == true) {
+        player1ScoreNode = document.createTextNode("COM Score: " + player1Score);
+        player2ScoreNode =  document.createTextNode(" | Your Score: " + player2Score);
+    }
     let roundCounterElement: HTMLSpanElement = document.createElement("span");
     let roundCounterNode: Node = document.createTextNode(" | Round: " + (round + 1) + "/" + allTicTacToes.length);
 
@@ -101,7 +128,7 @@ function drawField(): void {
     infoField.appendChild(player2ScoreElement);
     infoField.appendChild(roundCounterElement);
     
-    if (player1Turn == true) {
+    if (player1Turn == true && comGame == true) {
         comTurn();
     }
 }
@@ -190,9 +217,6 @@ function checkRoundEnd(): string {
             return("win");
         }
     }
-    if (freeCount == 0) {
-        return("draw");
-    }
     let win: boolean = false;
     let correctSymbols: number = 0;
     for (let x: number = 0; x < allTicTacToes.length; x++) {
@@ -231,6 +255,9 @@ function checkRoundEnd(): string {
     if (win == true) {
         return("win");
     }
+    if (freeCount == 0) {
+        return("draw");
+    }
 }
 
 function endRestartRound(roundEnd: string): void {
@@ -238,22 +265,18 @@ function endRestartRound(roundEnd: string): void {
     if (roundEnd == "win") {
         if (player1Turn == false) {
             player1Score++;
-            console.log("Player 1 won");
         }
         else {
             player2Score++;
-            console.log("Player 2 won");
         }
     }
     round += 1;
     let difficultyIndex: number = 0;
     if (allTicTacToes.length == 4) {
         difficultyIndex = 1;
-        console.log("dificulty was advanced");
     }
     else if (allTicTacToes.length == 5) {
         difficultyIndex = 2;
-        console.log("difficulty was expert");
     }
     if (round < allTicTacToes.length) {
         setDifficulty(allDifficulties[difficultyIndex].value, difficultyIndex);
@@ -266,19 +289,26 @@ function endRestartRound(roundEnd: string): void {
 function gameOver(difficultyIndex: number): void {
     playField.innerHTML = "";
     infoField.innerHTML = "";
+    playField.style.visibility = "hidden";
 
     let winner: string;
     if (player1Score > player2Score) {
         winner = "Player 1 won!";
+        if (comGame == true) {
+            winner = "COM won!";
+        }
     }
     else if (player2Score > player1Score) {
         winner = "Player 2 won!";
+        if (comGame == true) {
+            winner = "You won!";
+        }
     }
     else {
         winner = "It's a draw!";
     }
 
-    let winnerAnnouncement: HTMLSpanElement = document.createElement("span");
+    let winnerAnnouncement: HTMLParagraphElement = document.createElement("p");
     let announcementNode: Node = document.createTextNode(winner);
     let restartButton: HTMLButtonElement = document.createElement("button");
     let startScreenButton: HTMLButtonElement = document.createElement("button");

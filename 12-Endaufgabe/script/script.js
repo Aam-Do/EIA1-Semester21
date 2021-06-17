@@ -6,13 +6,30 @@ var player2Score = 0;
 var round = 0;
 var infoField;
 var playField;
+var comGame = false;
 window.addEventListener("load", function () {
     infoField = document.querySelector("#info");
     playField = document.querySelector("#field");
     drawStartScreen();
 });
 function drawStartScreen() {
-    infoField.innerHTML = "<p> Welcome to Tic-Tac-Toe! Select a difficulty level: </p>";
+    infoField.innerHTML = "<h2> Welcome to Tic-Tac-Toe! </h2> <p> Select a game mode: </p>";
+    playField.innerHTML = "";
+    playField.style.visibility = "hidden";
+    comGame = false;
+    var pvcButton = document.createElement("button");
+    var pvpButton = document.createElement("button");
+    var pvcNode = document.createTextNode("Player vs COM");
+    var pvpNode = document.createTextNode("Player vs Player");
+    pvcButton.appendChild(pvcNode);
+    pvpButton.appendChild(pvpNode);
+    infoField.appendChild(pvcButton);
+    infoField.appendChild(pvpButton);
+    pvcButton.addEventListener("click", function () { comGame = true; drawDifficultyScreen(); });
+    pvpButton.addEventListener("click", function () { drawDifficultyScreen(); });
+}
+function drawDifficultyScreen() {
+    infoField.innerHTML = "<h2> Welcome to Tic-Tac-Toe! </h2> <p> Select a difficulty level: </p>";
     playField.innerHTML = "";
     var _loop_1 = function (i) {
         var difficulty = allDifficulties[i];
@@ -39,13 +56,15 @@ function setDifficulty(difficulty, difficultyId) {
             console.log(allTicTacToes);
         }
     }
-    var cssWidth = 231 + 77 * difficultyId + "px";
-    playField.style.width = cssWidth;
+    var cssWidthHeight = 228 + 76 * difficultyId + "px";
+    playField.style.width = cssWidthHeight;
+    playField.style.height = cssWidthHeight;
     drawField();
 }
 function drawField() {
     playField.innerHTML = "";
     infoField.innerHTML = "";
+    playField.style.visibility = "visible";
     for (var x = 0; x < allTicTacToes.length; x++) {
         var _loop_2 = function (y) {
             var ticTacToe = allTicTacToes[x][y];
@@ -80,6 +99,10 @@ function drawField() {
     var player1ScoreNode = document.createTextNode("Player 1 Score: " + player1Score);
     var player2ScoreElement = document.createElement("span");
     var player2ScoreNode = document.createTextNode(" | Player 2 Score: " + player2Score);
+    if (comGame == true) {
+        player1ScoreNode = document.createTextNode("COM Score: " + player1Score);
+        player2ScoreNode = document.createTextNode(" | Your Score: " + player2Score);
+    }
     var roundCounterElement = document.createElement("span");
     var roundCounterNode = document.createTextNode(" | Round: " + (round + 1) + "/" + allTicTacToes.length);
     player1ScoreElement.appendChild(player1ScoreNode);
@@ -88,7 +111,7 @@ function drawField() {
     infoField.appendChild(player1ScoreElement);
     infoField.appendChild(player2ScoreElement);
     infoField.appendChild(roundCounterElement);
-    if (player1Turn == true) {
+    if (player1Turn == true && comGame == true) {
         comTurn();
     }
 }
@@ -174,9 +197,6 @@ function checkRoundEnd() {
             return ("win");
         }
     }
-    if (freeCount == 0) {
-        return ("draw");
-    }
     var win = false;
     var correctSymbols = 0;
     for (var x = 0; x < allTicTacToes.length; x++) {
@@ -215,28 +235,27 @@ function checkRoundEnd() {
     if (win == true) {
         return ("win");
     }
+    if (freeCount == 0) {
+        return ("draw");
+    }
 }
 function endRestartRound(roundEnd) {
     console.log("round ended");
     if (roundEnd == "win") {
         if (player1Turn == false) {
             player1Score++;
-            console.log("Player 1 won");
         }
         else {
             player2Score++;
-            console.log("Player 2 won");
         }
     }
     round += 1;
     var difficultyIndex = 0;
     if (allTicTacToes.length == 4) {
         difficultyIndex = 1;
-        console.log("dificulty was advanced");
     }
     else if (allTicTacToes.length == 5) {
         difficultyIndex = 2;
-        console.log("difficulty was expert");
     }
     if (round < allTicTacToes.length) {
         setDifficulty(allDifficulties[difficultyIndex].value, difficultyIndex);
@@ -248,17 +267,24 @@ function endRestartRound(roundEnd) {
 function gameOver(difficultyIndex) {
     playField.innerHTML = "";
     infoField.innerHTML = "";
+    playField.style.visibility = "hidden";
     var winner;
     if (player1Score > player2Score) {
         winner = "Player 1 won!";
+        if (comGame == true) {
+            winner = "COM won!";
+        }
     }
     else if (player2Score > player1Score) {
         winner = "Player 2 won!";
+        if (comGame == true) {
+            winner = "You won!";
+        }
     }
     else {
         winner = "It's a draw!";
     }
-    var winnerAnnouncement = document.createElement("span");
+    var winnerAnnouncement = document.createElement("p");
     var announcementNode = document.createTextNode(winner);
     var restartButton = document.createElement("button");
     var startScreenButton = document.createElement("button");
