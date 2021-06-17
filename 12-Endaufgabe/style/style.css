@@ -1,5 +1,9 @@
-div {
-    background-color: red;
+html {
+    text-align: center;
+}
+#info {
+    background-color: cadetblue;
+    width: fit-content;
 }
 #field {
     margin-top: 20px;

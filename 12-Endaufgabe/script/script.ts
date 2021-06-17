@@ -269,7 +269,7 @@ function gameOver(difficultyIndex: number): void {
 
     let winner: string;
     if (player1Score > player2Score) {
-        winner = " Player 1 won!";
+        winner = "Player 1 won!";
     }
     else if (player2Score > player1Score) {
         winner = "Player 2 won!";
