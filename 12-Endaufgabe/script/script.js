@@ -100,14 +100,25 @@ function drawField() {
             else {
                 fragment = 0.53;
             }
+            var symbolSize = void 0;
             if (window.innerWidth < 480) {
                 fragment = 1;
+                if (factor == 0) {
+                    symbolSize = 63;
+                }
+                else if (factor == 1) {
+                    symbolSize = 47;
+                }
+                else {
+                    symbolSize = 36;
+                }
             }
             var ticTacToeWidhHeight = (1 / allTicTacToes.length) * 100 - fragment + "%";
             newTicTacToe.style.width = ticTacToeWidhHeight;
             newTicTacToe.style.height = ticTacToeWidhHeight;
             newTicTacToe.setAttributeNode(idTicTacToe);
             playField.appendChild(newTicTacToe);
+            symbolIcon.style.fontSize = symbolSize + "px";
         };
         for (var y = 0; y < allTicTacToes.length; y++) {
             _loop_2(y);

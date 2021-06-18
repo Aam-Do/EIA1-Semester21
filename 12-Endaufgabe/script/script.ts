@@ -118,14 +118,25 @@ function drawField(): void {
             else {
                 fragment = 0.53;
             }
-            if ( window.innerWidth < 480 ) {
+            let symbolSize: number;
+            if (window.innerWidth < 480) {
                 fragment = 1;
+                if (factor == 0) {
+                    symbolSize = 63;
+                }
+                else if (factor == 1) {
+                    symbolSize = 47;
+                }
+                else {
+                    symbolSize = 36;
+                }
             }
             let ticTacToeWidhHeight: string = (1 / allTicTacToes.length) * 100 - fragment + "%"; 
             newTicTacToe.style.width = ticTacToeWidhHeight;
             newTicTacToe.style.height = ticTacToeWidhHeight;
             newTicTacToe.setAttributeNode(idTicTacToe);
             playField.appendChild(newTicTacToe);
+            symbolIcon.style.fontSize = symbolSize + "px";
         }
     }
     let player1ScoreElement: HTMLSpanElement = document.createElement("span");
