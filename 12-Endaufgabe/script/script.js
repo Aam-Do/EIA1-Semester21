@@ -46,6 +46,13 @@ function drawDifficultyScreen() {
     for (var i = 0; i < allDifficulties.length; i++) {
         _loop_1(i);
     }
+    var backButton = document.createElement("p");
+    backButton.innerHTML = "<- Back";
+    var backButtonId = document.createAttribute("id");
+    backButtonId.value = "back";
+    backButton.setAttributeNode(backButtonId);
+    infoField.appendChild(backButton);
+    backButton.addEventListener("click", function () { drawStartScreen(); });
 }
 function setDifficulty(difficulty, difficultyId) {
     console.log("setdifficulty");

@@ -47,6 +47,7 @@ function drawDifficultyScreen(): void {
         let newDifficultyButton: HTMLButtonElement = document.createElement("button");
         let node: Node = document.createTextNode(difficulty.name);
         let idDifficultyButton: Attr = document.createAttribute("id");
+        
 
         idDifficultyButton.value = (allDifficulties[i].value).toString();
       
@@ -56,7 +57,15 @@ function drawDifficultyScreen(): void {
         infoField.appendChild(newDifficultyButton);
         
         newDifficultyButton.addEventListener("click", function (): void {setDifficulty(allDifficulties[i].value, i); });
+
     }
+    let backButton: HTMLParagraphElement = document.createElement("p");
+    backButton.innerHTML = "<- Back";
+    let backButtonId: Attr = document.createAttribute("id");
+    backButtonId.value = "back";
+    backButton.setAttributeNode(backButtonId);
+    infoField.appendChild(backButton);
+    backButton.addEventListener("click", function(): void {drawStartScreen(); });
 }
 
 function setDifficulty(difficulty: number, difficultyId: number): void {

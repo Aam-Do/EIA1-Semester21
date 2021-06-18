@@ -41,6 +41,7 @@ button {
     background-color: whitesmoke;
     color: #3c7577;
     transition-duration: 0.3s;
+    cursor: pointer;
 }
 button:hover {
     background-color: #3c7577;
@@ -90,6 +91,12 @@ footer p {
 br {
     display: none;
 }
+#back {
+    cursor: pointer;
+    position: absolute;
+    font-size: 16px !important;
+    bottom: 18px;
+}
 @media only screen and (max-width: 480px) {
     br {
         display: inline-block;
@@ -137,5 +144,9 @@ br {
     }
     #field {
         max-width: 200px; max-height: 200px;
+    }
+    #back {
+        font-size: 16px !important;
+        bottom: 25px;
     }
 }
