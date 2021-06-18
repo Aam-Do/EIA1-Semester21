@@ -55,7 +55,7 @@ button:hover {
     border: 3px solid #18385c;
 }
 #field div {
-    width: 74px; height: 74px;
+    width: 19.47%; height: 19.47%;
     border: 1px solid #35200e;
     float: left;
 }
@@ -64,6 +64,9 @@ button:hover {
     margin: 0;
     padding: 0;
     opacity: 0.85;
+}
+#info .fas, #info .far {
+    font-size: inherit;
 }
 .fas {
     color: #263795;
@@ -84,7 +87,16 @@ footer p {
     margin: 20px;
     display: inline;
 }
+br {
+    display: none;
+}
 @media only screen and (max-width: 480px) {
+    br {
+        display: inline-block;
+    }
+    main {
+        max-height: 620px !important;
+    }
     header {
         height: 70px;
     }
@@ -119,5 +131,11 @@ footer p {
         background-color: whitesmoke;
         color: #3c7577;
         transition-duration: 0.3s;
+    }
+    #buttonMobile {
+        max-width: 100px !important;
+    }
+    #field {
+        max-width: 200px; max-height: 200px;
     }
 }

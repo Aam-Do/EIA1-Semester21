@@ -9,6 +9,7 @@ let round: number = 0;
 let infoField: HTMLElement;
 let playField: HTMLElement;
 let comGame: boolean = false;
+let factor: number;
 
 window.addEventListener("load", function(): void {
     infoField = document.querySelector("#info");
@@ -71,6 +72,8 @@ function setDifficulty(difficulty: number, difficultyId: number): void {
     let cssWidthHeight: string = 228 + 76 * difficultyId + "px";
     playField.style.width = cssWidthHeight;
     playField.style.height = cssWidthHeight;
+    factor = difficultyId;
+    
     drawField();
 }
 
@@ -104,7 +107,23 @@ function drawField(): void {
                 symbolIcon.setAttributeNode(symbolAtrr);
                 newTicTacToe.appendChild(symbolIcon);
             }
-            
+            let fragment: number;
+            if (factor == 0) {
+                fragment = 0.9;
+
+            }
+            else if (factor == 1) {
+                fragment = 0.7;
+            }
+            else {
+                fragment = 0.53;
+            }
+            if ( window.innerWidth < 480 ) {
+                fragment = 1;
+            }
+            let ticTacToeWidhHeight: string = (1 / allTicTacToes.length) * 100 - fragment + "%"; 
+            newTicTacToe.style.width = ticTacToeWidhHeight;
+            newTicTacToe.style.height = ticTacToeWidhHeight;
             newTicTacToe.setAttributeNode(idTicTacToe);
             playField.appendChild(newTicTacToe);
         }
@@ -163,10 +182,7 @@ function clickHandler(xy: string): void {
     }
     player1Turn = !player1Turn;
     let roundEnd: string = checkRoundEnd();
-    if (roundEnd == "win") {
-        endRestartRound(roundEnd);
-    }
-    else if (roundEnd == "draw") {
+    if (roundEnd == "win" || roundEnd == "draw") {
         endRestartRound(roundEnd);
     }
     else {
@@ -295,15 +311,15 @@ function gameOver(difficultyIndex: number): void {
 
     let winner: string;
     if (player1Score > player2Score) {
-        winner = "Player 1 (X) won!";
+        winner = "Player 1 ( <i class= 'fas fa-times' ></i> ) won!";
         if (comGame == true) {
-            winner = "COM (X) won!";
+            winner = "COM ( <i class= 'fas fa-times' ></i> ) won!";
         }
     }
     else if (player2Score > player1Score) {
-        winner = "Player 2 (O) won!";
+        winner = "Player 2 ( <i class= 'far fa-circle' ></i> ) won!";
         if (comGame == true) {
-            winner = "You (0) won!";
+            winner = "You ( <i class= 'far fa-circle' ></i> ) won!";
         }
     }
     else {
@@ -311,17 +327,21 @@ function gameOver(difficultyIndex: number): void {
     }
 
     let winnerAnnouncement: HTMLParagraphElement = document.createElement("p");
-    let announcementNode: Node = document.createTextNode(winner);
     let restartButton: HTMLButtonElement = document.createElement("button");
     let startScreenButton: HTMLButtonElement = document.createElement("button");
+    let br: HTMLBRElement = document.createElement("br");
     let restartNode: Node = document.createTextNode("Restart");
     let startScreenNode: Node = document.createTextNode("Back to Start Screen");
+    let buttonIdMobile: Attr = document.createAttribute("id");
+    buttonIdMobile.value = "buttonMobile";
 
-    winnerAnnouncement.appendChild(announcementNode);
+    winnerAnnouncement.innerHTML = winner;
     infoField.appendChild(winnerAnnouncement);
     restartButton.appendChild(restartNode);
     startScreenButton.appendChild(startScreenNode);
+    startScreenButton.setAttributeNode(buttonIdMobile);
     infoField.appendChild(restartButton);
+    infoField.appendChild(br);
     infoField.appendChild(startScreenButton);
     
     player1Turn = true;
