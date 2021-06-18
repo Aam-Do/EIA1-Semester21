@@ -295,15 +295,15 @@ function gameOver(difficultyIndex: number): void {
 
     let winner: string;
     if (player1Score > player2Score) {
-        winner = "Player 1 won!";
+        winner = "Player 1 (X) won!";
         if (comGame == true) {
-            winner = "COM won!";
+            winner = "COM (X) won!";
         }
     }
     else if (player2Score > player1Score) {
-        winner = "Player 2 won!";
+        winner = "Player 2 (O) won!";
         if (comGame == true) {
-            winner = "You won!";
+            winner = "You (0) won!";
         }
     }
     else {

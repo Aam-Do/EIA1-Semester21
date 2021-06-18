@@ -84,3 +84,40 @@ footer p {
     margin: 20px;
     display: inline;
 }
+@media only screen and (max-width: 480px) {
+    header {
+        height: 70px;
+    }
+    h1 {
+        color: whitesmoke;
+        font-size: 32px;
+        margin-top: 15px;
+    }
+    main {
+        top: 45%;
+    }
+    #info {
+        min-width: 200px;
+    }
+    footer {
+        height: 50px;
+    }
+    footer p {
+        top: 15px;
+        margin: 10px;
+        font-size: 14px;
+    }
+    #info p, #info span {
+        font-size: 16px;
+    }
+    button {
+        margin: 5px;
+        padding: 0.5em 0.5em;
+        max-width: 73px;
+        border: 1px solid #3c7577;
+        border-radius: 20px;
+        background-color: whitesmoke;
+        color: #3c7577;
+        transition-duration: 0.3s;
+    }
+}
