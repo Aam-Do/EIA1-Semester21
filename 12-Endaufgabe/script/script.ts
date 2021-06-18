@@ -289,6 +289,8 @@ function endRestartRound(roundEnd: string): void {
 function gameOver(difficultyIndex: number): void {
     playField.innerHTML = "";
     infoField.innerHTML = "";
+    playField.style.width = "0px";
+    playField.style.height = "0px";
     playField.style.visibility = "hidden";
 
     let winner: string;

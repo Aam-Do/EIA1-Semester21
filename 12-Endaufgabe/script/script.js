@@ -267,6 +267,8 @@ function endRestartRound(roundEnd) {
 function gameOver(difficultyIndex) {
     playField.innerHTML = "";
     infoField.innerHTML = "";
+    playField.style.width = "0px";
+    playField.style.height = "0px";
     playField.style.visibility = "hidden";
     var winner;
     if (player1Score > player2Score) {
