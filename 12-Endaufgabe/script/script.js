@@ -180,7 +180,7 @@ function clickHandler(xy) {
                     ticTacToe.state = "X";
                 }
                 else {
-                    ticTacToe.state = "0";
+                    ticTacToe.state = "O";
                 }
             }
         }
