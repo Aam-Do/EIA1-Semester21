@@ -145,7 +145,7 @@ function drawField() {
     var barId = document.createAttribute("id");
     barId.value = "progressBar";
     progressBar.setAttributeNode(barId);
-    var progress = ((1 / allTicTacToes.length) * 100) * round;
+    var progress = ((1 / allTicTacToes.length) * 100) * (round + 1);
     progressBar.style.background = "linear-gradient(90deg, #799fa0 " + progress + "%, whitesmoke " + progress + "%)";
     player1ScoreElement.appendChild(player1ScoreNode);
     player2ScoreElement.appendChild(player2ScoreNode);

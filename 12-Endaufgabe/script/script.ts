@@ -163,7 +163,7 @@ function drawField(): void {
     let barId: Attr = document.createAttribute("id");
     barId.value = "progressBar";
     progressBar.setAttributeNode(barId);
-    let progress: number = ((1 / allTicTacToes.length) * 100) * round;
+    let progress: number = ((1 / allTicTacToes.length) * 100) * (round + 1);
     progressBar.style.background = "linear-gradient(90deg, #799fa0 " + progress + "%, whitesmoke " + progress + "%)";
 
     player1ScoreElement.appendChild(player1ScoreNode);
