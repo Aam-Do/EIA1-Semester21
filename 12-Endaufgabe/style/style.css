@@ -97,6 +97,14 @@ br {
     font-size: 16px !important;
     bottom: 18px;
 }
+#progressBar {
+    margin-top: 10px;
+    background: linear-gradient(90deg, #799fa0 100%, whitesmoke 100%);
+    width: 100%;
+    height: 10px;
+    border: 1px solid whitesmoke;
+    transition-duration: 0.4;
+}
 @media only screen and (max-width: 480px) {
     br {
         display: inline-block;

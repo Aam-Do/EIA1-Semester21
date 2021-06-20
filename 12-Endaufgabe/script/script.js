@@ -141,12 +141,19 @@ function drawField() {
     }
     var roundCounterElement = document.createElement("span");
     var roundCounterNode = document.createTextNode(" | Round: " + (round + 1) + "/" + allTicTacToes.length);
+    var progressBar = document.createElement("div");
+    var barId = document.createAttribute("id");
+    barId.value = "progressBar";
+    progressBar.setAttributeNode(barId);
+    var progress = ((1 / allTicTacToes.length) * 100) * round;
+    progressBar.style.background = "linear-gradient(90deg, #799fa0 " + progress + "%, whitesmoke " + progress + "%)";
     player1ScoreElement.appendChild(player1ScoreNode);
     player2ScoreElement.appendChild(player2ScoreNode);
     roundCounterElement.appendChild(roundCounterNode);
     infoField.appendChild(player1ScoreElement);
     infoField.appendChild(player2ScoreElement);
     infoField.appendChild(roundCounterElement);
+    infoField.appendChild(progressBar);
     if (player1Turn == true && comGame == true) {
         comTurn();
     }

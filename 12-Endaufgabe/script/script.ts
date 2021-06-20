@@ -159,6 +159,13 @@ function drawField(): void {
     let roundCounterElement: HTMLSpanElement = document.createElement("span");
     let roundCounterNode: Node = document.createTextNode(" | Round: " + (round + 1) + "/" + allTicTacToes.length);
 
+    let progressBar: HTMLDivElement = document.createElement("div");
+    let barId: Attr = document.createAttribute("id");
+    barId.value = "progressBar";
+    progressBar.setAttributeNode(barId);
+    let progress: number = ((1 / allTicTacToes.length) * 100) * round;
+    progressBar.style.background = "linear-gradient(90deg, #799fa0 " + progress + "%, whitesmoke " + progress + "%)";
+
     player1ScoreElement.appendChild(player1ScoreNode);
     player2ScoreElement.appendChild(player2ScoreNode);
     roundCounterElement.appendChild(roundCounterNode);
@@ -166,6 +173,7 @@ function drawField(): void {
     infoField.appendChild(player1ScoreElement);
     infoField.appendChild(player2ScoreElement);
     infoField.appendChild(roundCounterElement);
+    infoField.appendChild(progressBar);
     
     if (player1Turn == true && comGame == true) {
         comTurn();
