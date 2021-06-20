@@ -55,13 +55,11 @@ function drawDifficultyScreen() {
     backButton.addEventListener("click", function () { drawStartScreen(); });
 }
 function setDifficulty(difficulty, difficultyId) {
-    console.log("setdifficulty");
     allTicTacToes.length = 0;
     for (var x = 0; x < difficulty; x++) {
         allTicTacToes[x] = [];
         for (var y = 0; y < difficulty; y++) {
             allTicTacToes[x][y] = { state: "free" };
-            console.log(allTicTacToes);
         }
     }
     var cssWidthHeight = 228 + 76 * difficultyId + "px";
@@ -88,11 +86,9 @@ function drawField() {
             else {
                 if (ticTacToe.state == "X") {
                     symbolAtrr.value = "fas fa-times";
-                    console.log("X set");
                 }
                 else {
                     symbolAtrr.value = "far fa-circle";
-                    console.log("O set");
                 }
                 symbolIcon.setAttributeNode(symbolAtrr);
                 newTicTacToe.appendChild(symbolIcon);
@@ -280,7 +276,6 @@ function checkRoundEnd() {
     }
 }
 function endRestartRound(roundEnd) {
-    console.log("round ended");
     if (roundEnd == "win") {
         if (player1Turn == false) {
             player1Score++;

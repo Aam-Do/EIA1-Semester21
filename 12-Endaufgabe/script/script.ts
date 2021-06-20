@@ -69,13 +69,11 @@ function drawDifficultyScreen(): void {
 }
 
 function setDifficulty(difficulty: number, difficultyId: number): void {
-    console.log("setdifficulty");
     allTicTacToes.length = 0;
     for ( let x: number = 0; x < difficulty; x++) {
         allTicTacToes[x] = [];
         for (let y: number = 0; y < difficulty; y++) {
             allTicTacToes[x][y] = {state: "free"};
-            console.log(allTicTacToes);
         }
     }
     let cssWidthHeight: string = 228 + 76 * difficultyId + "px";
@@ -107,11 +105,9 @@ function drawField(): void {
             else {
                 if (ticTacToe.state == "X") {
                     symbolAtrr.value = "fas fa-times";
-                    console.log("X set");
                 }
                 else {
                     symbolAtrr.value = "far fa-circle";
-                    console.log("O set");
                 }
                 symbolIcon.setAttributeNode(symbolAtrr);
                 newTicTacToe.appendChild(symbolIcon);
@@ -305,7 +301,6 @@ function checkRoundEnd(): string {
 }
 
 function endRestartRound(roundEnd: string): void {
-    console.log("round ended");
     if (roundEnd == "win") {
         if (player1Turn == false) {
             player1Score++;
