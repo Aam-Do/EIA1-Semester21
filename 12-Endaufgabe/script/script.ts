@@ -60,7 +60,7 @@ function drawDifficultyScreen(): void {
 
     }
     let backButton: HTMLParagraphElement = document.createElement("p");
-    backButton.innerHTML = "<- Back";
+    backButton.innerHTML = "< Back";
     let backButtonId: Attr = document.createAttribute("id");
     backButtonId.value = "back";
     backButton.setAttributeNode(backButtonId);

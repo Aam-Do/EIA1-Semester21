@@ -15,6 +15,10 @@ header {
 h1 {
     color: whitesmoke;
     font-size: 45px;
+    font-family: 'Lobster', cursive;
+}
+h2 {
+    font-size: 28px;
 }
 main {
     position: absolute;
@@ -26,15 +30,19 @@ main {
     background-color: #799fa0;
     width: fit-content;
     padding: 20px;
+    font-family: 'Shadows Into Light', cursive;
+    letter-spacing: 0.05em;
     border-radius: 20px;
     margin: auto;
     color: whitesmoke;
 }
 #info p, #info span {
     font-size: 20px;
+    margin-bottom: 10px;
 }
 button {
     margin: 10px;
+    margin-bottom: 25px;
     padding: 0.9em 1.3em;
     border: 1px solid #3c7577;
     border-radius: 20px;
@@ -42,6 +50,9 @@ button {
     color: #3c7577;
     transition-duration: 0.3s;
     cursor: pointer;
+    font-family: 'Viaoda Libre', cursive;
+    font-weight: bold;
+    letter-spacing: 0.05em;
 }
 button:hover {
     background-color: #3c7577;
@@ -83,6 +94,9 @@ footer {
 }
 footer p {
     font-size: 25px;
+    font-family: 'Viaoda Libre', cursive;
+    font-weight: bold;
+    letter-spacing: 0.05em;
     position: relative;
     top: 50px;
     margin: 20px;
@@ -94,8 +108,11 @@ br {
 #back {
     cursor: pointer;
     position: absolute;
-    font-size: 16px !important;
-    bottom: 18px;
+    font-size: 18px !important;
+    bottom: 23px;
+}
+#back:hover {
+    color: #1b4955;
 }
 #progressBar {
     margin-top: 10px;

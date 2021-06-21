@@ -47,7 +47,7 @@ function drawDifficultyScreen() {
         _loop_1(i);
     }
     var backButton = document.createElement("p");
-    backButton.innerHTML = "<- Back";
+    backButton.innerHTML = "< Back";
     var backButtonId = document.createAttribute("id");
     backButtonId.value = "back";
     backButton.setAttributeNode(backButtonId);
