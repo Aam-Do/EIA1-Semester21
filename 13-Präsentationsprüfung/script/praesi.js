@@ -1,6 +1,12 @@
 var pin = "1234";
-var tries;
-var list = [{ date: "2021 07 03", value: -7000 }, { date: "2021 06 16", value: 25 }, { date: "2021 06 24", value: 140 }, { date: "2021 07 01", value: -120 }, { date: "2021 06 19", value: 5000 }];
+var tries = 3;
+var list = [
+    { date: "2021 07 03", value: -7000 },
+    { date: "2021 06 16", value: 25 },
+    { date: "2021 06 24", value: 140 },
+    { date: "2021 07 01", value: -120 },
+    { date: "2021 06 19", value: 5000 }
+];
 var current = 2421.67;
 var container;
 var pinInput;
@@ -38,16 +44,41 @@ function checkPin() {
     if (pinInput.value == pin) {
         drawKontostand();
     }
-    else if (tries == 1) {
-        alert("Sie haben Ihre PIN dreimal falsch eingegeben. Sie kehren nun zum Startbildschirm zurück.");
-        drawButtons();
-    }
-    else {
+    else if (tries > 1) {
         tries -= 1;
         alert("Die eingegebene PIN war nicht korrekt. Verbleibende Versuche: " + tries);
         drawPinScreen();
     }
+    else {
+        alert("Sie haben Ihre PIN dreimal falsch eingegeben. Sie kehren nun zum Startbildschirm zurück.");
+        drawButtons();
+    }
 }
+// if ("Bedingung") {
+//     // do something
+// }
+// else if ("andere Bedingung") {
+//     // do something different
+// }
+// else {
+//     // do yet another thing
+// }
+// let i: number = 0;
+// do {
+//     // something
+//     i++;
+// } while (i < 8);
+// for (let i: number = 0; i < 8; i++) {
+//     // do something
+// }
+// interface InterfaceName { key1: string; key2: number; key3: boolean; key4: number[]; }
+// let objName: InterfaceName = { key1: "value", key2: 123, key3: true, key4: [1, 2, 3] };
+// for (let i: number = 0; i < list.length; i++) {
+//     let umsatz: MyObject = list[i];
+//     if (umsatz.date == "2021 06 24") {
+//         console.log(umsatz.value);
+//     }
+// }
 function drawKontostand() {
     list.sort(function (a, b) { return (a.date > b.date) ? 1 : -1; });
     container.innerHTML = "";
