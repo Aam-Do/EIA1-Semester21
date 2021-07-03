@@ -67,7 +67,6 @@ function checkPin(): void {
     }
 }
 
-
 // if ("Bedingung") {
 //     // do something
 // }
@@ -98,8 +97,6 @@ function checkPin(): void {
 //         console.log(umsatz.value);
 //     }
 // }
-
-
 
 function drawKontostand(): void {
     list.sort((a, b) => (a.date > b.date) ? 1 : -1);
